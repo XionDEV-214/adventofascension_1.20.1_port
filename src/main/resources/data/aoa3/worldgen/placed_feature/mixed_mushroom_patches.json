@@ -1,0 +1,23 @@
+{
+  "feature": "aoa3:mixed_mushroom_patches",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:uniform",
+        "value": {
+          "min_inclusive": 0,
+          "max_inclusive": 30
+        }
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:up_to_surface",
+      "min": 15,
+      "max": 110
+    }
+  ]
+}

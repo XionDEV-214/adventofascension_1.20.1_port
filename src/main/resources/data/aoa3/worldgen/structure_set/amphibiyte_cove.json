@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:amphibiyte_cove",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 8,
+    "salt": 167064097
+  }
+}

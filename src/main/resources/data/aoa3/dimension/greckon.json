@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:greckon",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:greckon",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:greckon_mountains"
+    }
+  }
+}

@@ -1,0 +1,211 @@
+package com.deveisia.aoa3.common.misc;
+
+import com.deveisia.aoa3.common.registration.AoABlocks;
+import com.deveisia.aoa3.common.registration.AoAItems;
+import com.deveisia.aoa3.mixin.common.accessor.RangedAttributeAccessor;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.level.block.ComposterBlock;
+
+public class NativePatching {
+	public static void doEarlyPatches() {
+		((RangedAttributeAccessor)Attributes.MAX_HEALTH).setMaxValue(Double.MAX_VALUE);
+		((RangedAttributeAccessor)Attributes.ATTACK_KNOCKBACK).setMaxValue(Double.MAX_VALUE);
+	}
+
+	public static void postInit() {
+		patchInComposterBlocks();
+	}
+
+	private static void patchInComposterBlocks() {
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ACHONY_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLOOD_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_CELEVUS_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.GREEN_CELEVUS_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PURPLE_CELEVUS_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RED_CELEVUS_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.WHITE_CELEVUS_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_CELEVUS_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CHURRY_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CREEP_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DAWN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.HAUNTED_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.HAUNTED_EYES_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_HAVEN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PINK_HAVEN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PURPLE_HAVEN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RED_HAVEN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.TURQUOISE_HAVEN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_HAVEN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.IRODUST_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.IROGOLD_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUCALUS_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUNICIA_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUNOSSO_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RUNIC_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHADOW_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHADOWBLOOD_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHYRE_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BRIGHT_SHYRE_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.STRANGLEWOOD_LEAVES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.VEIN_LEAVES.get().asItem(), 0.3f);
+
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ACHONY_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLOODTWISTER_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_CELEVUS_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_HAVEN_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BRIGHT_SHYRE_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CHURRY_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CREEP_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DAWNWOOD_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.EYEBUSH_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.EYE_HANGER_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.GREEN_CELEVUS_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.HAUNTED_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.IRODUST_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.IROGOLD_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUCALUS_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUNICIA_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUNOSSO_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PINK_HAVEN_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PURPLE_CELEVUS_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PURPLE_HAVEN_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RED_CELEVUS_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RED_HAVEN_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RUNIC_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHADOW_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHYRE_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.STRANGLEWOOD_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.TURQUOISE_HAVEN_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_CELEVUS_SAPLING.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_HAVEN_SAPLING.get().asItem(), 0.3f);
+
+		ComposterBlock.COMPOSTABLES.put(AoAItems.BUBBLE_BERRY_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.CHILLI_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.FLORACLE_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.GOLDICAP_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.HEART_FRUIT_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.LUNACRIKE_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.LUNALON_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.LUNA_GLOBE_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.ROSIDON_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.TEA_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.THORNY_PLANT_SEEDS.get(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.TRILLIAD_SEEDS.get(), 0.3f);
+
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_CANDY_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BUREAL_STOCKS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CREEP_BUSH.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CREEP_FLOWERS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DAWN_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DEAD_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DEEP_BLOOMS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DEEP_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.GREEN_WATERWEEDS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.HAVEN_GRASS_PLANT.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.IROTOPS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.IRO_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_WEEDS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_WEEDS_DOWN.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUCON_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUNALIP.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LUNTAR.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LURCHIANS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.MYSTIC_BUSH.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.MYSTIC_FERNS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PINK_CANDY_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RAINBOW_GRASS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RAINBOW_GRASS2.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RAINBOW_GRASS3.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RED_CRYSTAL_PLANT.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RED_WATERWEEDS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RUNE_BULBS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.TUBEICLES.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.WHITE_WATERWEEDS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_WATERWEEDS.get().asItem(), 0.3f);
+
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ANCIENT_VINES.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ANCIENT_VINES_CAP.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CREEP_VINES.get().asItem(), 0.5f);
+
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLOOD_PINE_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLOOD_PINE.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLOOD_SPIKES.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLOOD_STRANDS.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BULB_STOCK.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BULB_STOCK_CAP.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CELEBULBS_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.GREEN_CELEBULBS.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_CELEBULBS.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.CORAL_CAGE.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DAWNWOOD_BARS.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.EYE_SHRUB_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.EYE_SHRUB.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.GARDEN_GRASS.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_HAVENDALES_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_HAVENDALES.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PINK_HAVENDALES_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PINK_HAVENDALES.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_HAVENDALES_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_HAVENDALES.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_STEM_CAP.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_STEM_CAP_DOWN.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_WIGGLER.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_WIGGLER_BOTTOM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LELYETIAN_WIGGLER_TOP.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHYRE_STOCK.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHYRE_CAP.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHYRE_CAP_DOWN.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.VOX_FUNGI_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.VOX_FUNGI.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.VOX_TENTACLES_STEM.get().asItem(), 0.5f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.VOX_TENTACLES.get().asItem(), 0.5f);
+
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ARCBULB.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ARCFLOWER.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_CELEVIANS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_DAYLOOMS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_GLOWSHROOM.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_OCEALITES.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DAILEERS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DAWN_BUSH.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.DAWN_FLOWER.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.GREEN_GLOWSHROOM.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.HAUNTED_FLOWER.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.HORIZON_DAISIES.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.LYLIPS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.MAGIAS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ORANGE_GLOWSHROOM.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PINK_DAYLOOMS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PURPLE_CELEVIANS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PURPLE_GLOWSHROOM.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RED_CELEVIANS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.RUNIC_BUSH.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.SHYRE_WEED.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.WHITE_CELEVIANS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_DAYLOOMS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_GLOWSHROOM.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.TANGLE_THORNS.get().asItem(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.TRILLIAD_BLOOM.get().asItem(), 0.65f);
+
+		ComposterBlock.COMPOSTABLES.put(AoAItems.TRILLIAD_LEAVES.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.ROSIDONS.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.LUNACRIKE.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.LUNA_GLOBE.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.LUNALONS.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.MAGIC_MARANG.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.MYSTIC_SHROOMS.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.GOLDICAP_PETALS.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.HEART_FRUIT.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.CHILLI.get(), 0.65f);
+		ComposterBlock.COMPOSTABLES.put(AoAItems.BUBBLE_BERRIES.get(), 0.65f);
+
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLACK_MUSHROOM_BLOCK.get().asItem(), 0.85f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.BLUE_MUSHROOM_BLOCK.get().asItem(), 0.85f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.GREEN_MUSHROOM_BLOCK.get().asItem(), 0.85f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.ORANGE_MUSHROOM_BLOCK.get().asItem(), 0.85f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.PURPLE_MUSHROOM_BLOCK.get().asItem(), 0.85f);
+		ComposterBlock.COMPOSTABLES.put(AoABlocks.YELLOW_MUSHROOM_BLOCK.get().asItem(), 0.85f);
+	}
+}

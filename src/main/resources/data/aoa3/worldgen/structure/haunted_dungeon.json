@@ -1,0 +1,49 @@
+{
+  "type": "aoa3:aoa_structure",
+  "biomes": [
+    "aoa3:greckon_mountains"
+  ],
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "minecraft:cave_spider",
+          "weight": 5,
+          "minCount": 1,
+          "maxCount": 3
+        },
+        {
+          "type": "minecraft:spider",
+          "weight": 7,
+          "minCount": 1,
+          "maxCount": 2
+        },
+        {
+          "type": "aoa3:banshee",
+          "weight": 2,
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "type": "aoa3:undead_troll",
+          "weight": 2,
+          "minCount": 1,
+          "maxCount": 1
+        },
+        {
+          "type": "aoa3:nightmare_spider",
+          "weight": 2,
+          "minCount": 1,
+          "maxCount": 1
+        }
+      ]
+    }
+  },
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "start_pool": "aoa3:greckon/haunted_dungeon/main_pool",
+  "size": 10,
+  "placement": "surface",
+  "haunted_dungeon_rooms": true
+}

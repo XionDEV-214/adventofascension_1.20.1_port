@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:abyss",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:abyss",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:abyssal_plains"
+    }
+  }
+}

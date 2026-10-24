@@ -1,0 +1,54 @@
+package com.deveisia.aoa3.content.entity.projectile.staff;
+
+import com.deveisia.aoa3.common.registration.AoAEntities;
+import com.deveisia.aoa3.content.item.EnergyProjectileWeapon;
+import java.util.UUID;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.ThrowableProjectile;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
+
+public class PhantomShotEntity extends BaseEnergyShot {
+	private UUID lastHit = null;
+
+	public PhantomShotEntity(EntityType<? extends ThrowableProjectile> entityType, Level world) {
+		super(entityType, world);
+	}
+
+	public PhantomShotEntity(Level world) {
+		super(AoAEntities.Projectiles.PHANTOM_SHOT.get(), world);
+	}
+
+	public PhantomShotEntity(LivingEntity shooter, EnergyProjectileWeapon weapon, int maxAge) {
+		super(AoAEntities.Projectiles.PHANTOM_SHOT.get(), shooter, weapon, maxAge);
+	}
+
+	public PhantomShotEntity(Level world, double x, double y, double z) {
+		super(AoAEntities.Projectiles.PHANTOM_SHOT.get(), world, x, y, z);
+	}
+
+	@Override
+	protected void onHit(HitResult result) {
+		if (!level().isClientSide) {
+			if (weapon != null) {
+				if (result.getType() == HitResult.Type.BLOCK) {
+					Entity shooter = getOwner();
+
+					if (shooter instanceof LivingEntity)
+						weapon.doBlockImpact(this, result.getLocation(), (LivingEntity)shooter);
+
+					discard();
+				}
+				else if (result.getType() == HitResult.Type.ENTITY && !((EntityHitResult)result).getEntity().getUUID().equals(lastHit)) {
+					Entity shooter = getOwner();
+
+					if (shooter instanceof LivingEntity)
+						weapon.doEntityImpact(this, ((EntityHitResult)result).getEntity(), (LivingEntity)shooter);
+				}
+			}
+		}
+	}
+}

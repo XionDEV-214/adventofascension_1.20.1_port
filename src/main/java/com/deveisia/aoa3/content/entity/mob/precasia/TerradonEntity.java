@@ -1,0 +1,87 @@
+package com.deveisia.aoa3.content.entity.mob.precasia;
+
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.content.entity.base.AoAMeleeMob;
+import com.deveisia.aoa3.util.RandomUtil;
+import javax.annotation.Nullable;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class TerradonEntity extends AoAMeleeMob {
+	private static final EntityDataAccessor<Boolean> INVULNERABLE = SynchedEntityData.<Boolean>defineId(TerradonEntity.class, EntityDataSerializers.BOOLEAN);
+	private int invulnCooldown = 0;
+
+	public TerradonEntity(EntityType<? extends Monster> entityType, Level world) {
+		super(entityType, world);
+
+		isSlipperyMovement = true;
+
+		setSpeed(1.8f);
+	}
+
+	@Override
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+		return 1.3125f;
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+
+		this.entityData.define(INVULNERABLE, false);
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return AoASounds.ENTITY_TERRADON_AMBIENT.get();
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getDeathSound() {
+		return AoASounds.ENTITY_TERRADON_DEATH.get();
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return AoASounds.ENTITY_TERRADON_HURT.get();
+	}
+
+	@Override
+	protected SoundEvent getStepSound(BlockPos pos, BlockState blockState) {
+		return AoASounds.ENTITY_GENERIC_VERY_HEAVY_STEP.get();
+	}
+
+	@Override
+	public boolean isInvulnerable() {
+		return super.isInvulnerable() || entityData.get(INVULNERABLE);
+	}
+
+	@Override
+	public void aiStep() {
+		super.aiStep();
+
+		if (!level().isClientSide) {
+			if (invulnCooldown > 0)
+				invulnCooldown--;
+
+			if (invulnCooldown <= 0)
+				setInvulnerable(false);
+
+			if (!isInvulnerable() && RandomUtil.oneInNChance(200))
+				setInvulnerable(true);
+		}
+	}
+}

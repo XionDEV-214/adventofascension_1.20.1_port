@@ -1,0 +1,20 @@
+package com.deveisia.aoa3.scheduling.async;
+
+import com.deveisia.aoa3.scheduling.AoAScheduler;
+import com.deveisia.aoa3.util.AoAHaloUtil;
+import com.deveisia.aoa3.util.WebUtil;
+import java.util.HashMap;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+public class UpdateHalosMapTask implements Runnable {
+	@Override
+	public void run() {
+		AoAHaloUtil.updateHalosMap(WebUtil.fillHalosMap(new HashMap<UUID, AoAHaloUtil.PlayerHaloContainer>()));
+		schedule(60, TimeUnit.MINUTES);
+	}
+
+	public void schedule(Integer time, TimeUnit units) {
+		AoAScheduler.scheduleAsyncTask(this, time, units);
+	}
+}

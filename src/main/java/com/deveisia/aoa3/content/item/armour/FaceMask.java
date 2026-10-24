@@ -1,0 +1,35 @@
+package com.deveisia.aoa3.content.item.armour;
+
+import com.deveisia.aoa3.util.ItemUtil;
+import com.deveisia.aoa3.util.LocaleUtil;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class FaceMask extends AdventArmour {
+	public FaceMask() {
+		super(ItemUtil.customArmourMaterial("aoa3:face_mask", 36, new int[] {4, 7, 8, 5}, 10, SoundEvents.ARMOR_EQUIP_GENERIC, 5), EquipmentSlot.HEAD);
+	}
+
+	@Override
+	public AdventArmour.Type setType() {
+		return AdventArmour.Type.ALL;
+	}
+
+	@Override
+	public boolean isHelmetAirTight(ServerPlayer player) {
+		return true;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText("items.description.helmet.airTight", LocaleUtil.ItemDescriptionType.ITEM_TYPE_INFO));
+		tooltip.add(anySetEffectHeader());
+	}
+}

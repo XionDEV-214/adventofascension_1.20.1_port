@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:archer_outpost",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 12,
+    "salt": 1944614434
+  }
+}

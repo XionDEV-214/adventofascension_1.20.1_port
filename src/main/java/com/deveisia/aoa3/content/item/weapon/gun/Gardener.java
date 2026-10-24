@@ -1,0 +1,56 @@
+package com.deveisia.aoa3.content.item.weapon.gun;
+
+import com.deveisia.aoa3.common.registration.AoAEnchantments;
+import com.deveisia.aoa3.common.registration.AoAItemGroups;
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.content.entity.projectile.gun.BaseBullet;
+import com.deveisia.aoa3.content.entity.projectile.gun.SeedDartEntity;
+import com.deveisia.aoa3.util.ItemUtil;
+import javax.annotation.Nullable;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraftforge.common.Tags;
+
+public class Gardener extends BaseGun {
+	double dmg;
+	int firingDelay;
+
+	public Gardener(double dmg, int durability, int firingDelayTicks, float recoil) {
+		super(AoAItemGroups.GUNS.properties().durability(durability).rarity(Rarity.RARE), dmg, firingDelayTicks, recoil);
+		this.dmg = dmg;
+		this.firingDelay = firingDelayTicks;
+	}
+
+	@Nullable
+	@Override
+	public SoundEvent getFiringSound() {
+		return AoASounds.ITEM_GUN_BLOWPIPE_SHOOT.get();
+	}
+
+	@Override
+	public Item getAmmoItem() {
+		return Items.WHEAT_SEEDS;
+	}
+
+	@Nullable
+	@Override
+	public BaseBullet findAndConsumeAmmo(LivingEntity shooter, ItemStack gunStack, InteractionHand hand) {
+		if (shooter.getType() != EntityType.PLAYER || ItemUtil.findItemByTag((Player)shooter, Tags.Items.SEEDS, !shooter.level().isClientSide(), 1 + EnchantmentHelper.getItemEnchantmentLevel(AoAEnchantments.GREED.get(), gunStack)))
+			return createProjectileEntity(shooter, gunStack, hand);
+
+		return null;
+	}
+
+	@Override
+	public BaseBullet createProjectileEntity(LivingEntity shooter, ItemStack gunStack, InteractionHand hand) {
+		return new SeedDartEntity(shooter, this, hand, 120, 0);
+	}
+}

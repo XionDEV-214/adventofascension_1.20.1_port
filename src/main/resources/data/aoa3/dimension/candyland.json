@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:candyland",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:candyland",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:candy_hills"
+    }
+  }
+}

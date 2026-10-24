@@ -1,0 +1,103 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.4,
+  "downfall": 0.65,
+  "effects": {
+    "fog_color": 0,
+    "sky_color": 7907327,
+    "water_color": 13158600,
+    "water_fog_color": 13158600,
+    "grass_color_modifier": "none",
+    "music": {
+      "sound": "aoa3:biome.cavern_depths.music",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "aoa3:cave_creep",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:rock_critter",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:dweller",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:rock_crawler",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:doubler",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:rockbiter",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:case_construct",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "aoa3:shik",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "aoa3:dimensional_fabric_ceiling",
+      "aoa3:dimensional_fabric_floor"
+    ],
+    [],
+    [],
+    [
+      "aoa3:bone_formations"
+    ],
+    [],
+    [],
+    [
+      "aoa3:deep_cases"
+    ],
+    [],
+    [],
+    [
+      "aoa3:deeplands_plants"
+    ],
+    [
+      "aoa3:deep_crystals"
+    ]
+  ],
+  "creature_spawn_probability": 0.1
+}

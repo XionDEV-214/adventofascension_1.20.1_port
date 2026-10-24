@@ -1,0 +1,12 @@
+{
+  "feature": "aoa3:giant_coral_trees",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    }
+  ]
+}

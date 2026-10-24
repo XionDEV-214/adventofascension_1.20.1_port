@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    " B ",
+    "BCB"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:gems/jade"
+    },
+    "B": {
+      "item": "aoa3:hardened_confetti_ball"
+    },
+    "C": {
+      "tag": "forge:rods/serenadium"
+    }
+  },
+  "result": {
+    "item": "aoa3:goofy_greatblade"
+  }
+}

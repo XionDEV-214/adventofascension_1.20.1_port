@@ -1,0 +1,105 @@
+{
+  "type": "minecraft:gift",
+  "pools": [
+    {
+      "name": "minerals",
+      "rolls": {
+        "min": 2.0,
+        "max": 5.0,
+        "type": "minecraft:uniform"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 75,
+          "name": "minecraft:iron_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 60,
+          "name": "minecraft:gold_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 55,
+          "name": "minecraft:netherite_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 80,
+          "name": "gtceu:serenadium_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 65,
+          "name": "gtceu:rosite_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 85,
+          "name": "aoa3:rusted_iron_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "gtceu:shyrestone_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 50,
+          "name": "gtceu:varsium_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 35,
+          "name": "gtceu:mystite_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 35,
+          "name": "gtceu:lyon_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "gtceu:ghoulish_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "gtceu:ghastly_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 50,
+          "name": "gtceu:emberstone_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "gtceu:elecanium_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 50,
+          "name": "gtceu:blazium_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 50,
+          "name": "gtceu:baronyte_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 50,
+          "name": "aoa3:skeletal_ingot"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "aoa3:lunar_ingot"
+        }
+      ]
+    }
+  ]
+}

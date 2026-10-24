@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:biome_friendly_lake",
+  "config": {
+    "state": {
+      "Properties": {
+        "level": "0"
+      },
+      "Name": "minecraft:water"
+    }
+  }
+}

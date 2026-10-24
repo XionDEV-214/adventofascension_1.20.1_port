@@ -1,0 +1,39 @@
+package com.deveisia.aoa3.content.item.weapon.gun;
+
+import com.deveisia.aoa3.common.registration.AoAItemGroups;
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.content.entity.projectile.gun.BaseBullet;
+import javax.annotation.Nullable;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+
+public class Megagun extends BaseGun {
+	public Megagun(double dmg, int durability, int firingDelayTicks, float recoil) {
+		super(AoAItemGroups.GUNS, dmg, durability, firingDelayTicks, recoil);
+	}
+
+	@Nullable
+	@Override
+	public SoundEvent getFiringSound() {
+		return AoASounds.ITEM_GUN_MINIGUN_AUTOMATIC_FIRE.get();
+	}
+
+	@Override
+	protected float getFiringSoundPitchAdjust() {
+		return 0.85f;
+	}
+
+	@Override
+	public void releaseUsing(ItemStack stack, Level level, LivingEntity shooter, int timeCharged) {
+		shooter.level().playSound(null, shooter.getX(), shooter.getY(), shooter.getZ(), AoASounds.ITEM_GUN_MINIGUN_WINDDOWN.get(), SoundSource.PLAYERS, 1.0f, 1f);
+	}
+
+	@Override
+	protected void doFiringSound(LivingEntity shooter, BaseBullet bullet, ItemStack stack, InteractionHand hand) {
+		shooter.level().playSound(null, shooter.getX(), shooter.getY(), shooter.getZ(), getFiringSound(), SoundSource.PLAYERS, 1.0f, getFiringSoundPitchAdjust());
+	}
+}

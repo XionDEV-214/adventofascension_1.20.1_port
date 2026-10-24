@@ -1,0 +1,40 @@
+{
+  "parent": "aoa3:iromine/even_more_shiny",
+  "display": {
+    "icon": {
+      "item": "aoa3:ornate_trophy"
+    },
+    "title": {
+      "color": "dark_green",
+      "translate": "advancements.aoa3.iromine.less_shiny_now_though.title"
+    },
+    "description": {
+      "color": "white",
+      "translate": "advancements.aoa3.iromine.less_shiny_now_though.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "obtain_ornate_mechbot_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{BlockEntityTag:{EntityID:\"aoa3:mechbot\",OriginalTrophy:1b},display:{Name:'{\"translate\":\"block.aoa3.ornate_trophy.desc\",\"with\":[{\"translate\":\"entity.aoa3.mechbot\"}]}'}}",
+            "items": [
+              "aoa3:ornate_trophy"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_ornate_mechbot_trophy"
+    ]
+  ]
+}

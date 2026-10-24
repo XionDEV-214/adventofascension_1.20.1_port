@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:nuggets/baronyte",
+    "#forge:nuggets/blazium",
+    "#forge:nuggets/elecanium",
+    "#forge:nuggets/emberstone",
+    "#forge:nuggets/ghastly",
+    "#forge:nuggets/ghoulish",
+    "#forge:nuggets/serenadium",
+    "aoa3:lunar_nugget",
+    "#forge:nuggets/lyon",
+    "#forge:nuggets/mystite",
+    "#forge:nuggets/rosite",
+    "#forge:nuggets/shyrestone",
+    "aoa3:skeletal_nugget",
+    "#forge:nuggets/varsium"
+  ]
+}

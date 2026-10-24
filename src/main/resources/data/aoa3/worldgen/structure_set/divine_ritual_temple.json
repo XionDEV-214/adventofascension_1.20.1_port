@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:divine_ritual_temple",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 12,
+    "salt": 1033768632
+  }
+}

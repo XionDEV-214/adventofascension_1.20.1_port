@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:gems/amethyst",
+    "#forge:gems/bloodstone",
+    "#forge:gems/crystallite",
+    "#forge:gems/gemenyte",
+    "#forge:gems/jade",
+    "#forge:gems/jewelyte",
+    "#forge:gems/ornamyte",
+    "#forge:gems/sapphire",
+    "#forge:gems/shyregem"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 16,
+    "xz_spread": 5,
+    "y_spread": 3,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "entries": [
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "aoa3:irotops"
+                }
+              },
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "aoa3:lurchians"
+                }
+              },
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "aoa3:iro_grass"
+                }
+              }
+            ],
+            "type": "minecraft:weighted_state_provider"
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    }
+  }
+}

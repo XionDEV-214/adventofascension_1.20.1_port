@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:iromine",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:iromine",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:iromine"
+    }
+  }
+}

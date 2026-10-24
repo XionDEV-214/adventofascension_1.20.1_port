@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:enforcer_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 26,
+    "separation": 6,
+    "salt": 1539489117
+  }
+}

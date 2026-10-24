@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "DAD",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/baronyte"
+    },
+    "B": {
+      "tag": "forge:rods/serenadium"
+    },
+    "C": {
+      "item": "aoa3:green_druse"
+    },
+    "D": {
+      "item": "aoa3:hardened_confetti_ball"
+    }
+  },
+  "result": {
+    "item": "aoa3:show_staff"
+  }
+}

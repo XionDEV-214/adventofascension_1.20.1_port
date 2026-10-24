@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:lunalus",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:lunalus",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:asteroid_belt"
+    }
+  }
+}

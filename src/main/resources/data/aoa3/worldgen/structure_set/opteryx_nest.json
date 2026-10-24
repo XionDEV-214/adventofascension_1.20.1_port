@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:opteryx_nest",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 24,
+    "separation": 8,
+    "salt": 1202932561
+  }
+}

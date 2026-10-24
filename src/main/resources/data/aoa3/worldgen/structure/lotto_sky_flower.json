@@ -1,0 +1,12 @@
+{
+  "type": "aoa3:aoa_structure",
+  "biomes": [
+    "aoa3:floral_islands"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "start_pool": "aoa3:gardencia/lotto_sky_flower/main_pool",
+  "size": 10,
+  "placement": "surface"
+}

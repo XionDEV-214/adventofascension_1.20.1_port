@@ -1,0 +1,18 @@
+{
+  "type": "aoa3:aoa_structure",
+  "biomes": [
+    "aoa3:nowhere"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "start_pool": "aoa3:nowhere/hub/main_pool",
+  "size": 15,
+  "placement": "fixed",
+  "fixed_rotation": true,
+  "position": [
+    -16,
+    199,
+    -16
+  ]
+}

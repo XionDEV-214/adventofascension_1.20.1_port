@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "aoa3:lucalus_tree",
+          "config": {
+            "state": {
+              "Properties": {
+                "stage": "0"
+              },
+              "Name": "aoa3:lucalus_sapling"
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:stranglewood_tree",
+          "config": {
+            "state": {
+              "Properties": {
+                "stage": "0"
+              },
+              "Name": "aoa3:stranglewood_sapling"
+            }
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

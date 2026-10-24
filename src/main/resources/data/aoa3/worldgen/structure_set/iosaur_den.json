@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:iosaur_den",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 24,
+    "separation": 8,
+    "salt": 1453574494
+  }
+}

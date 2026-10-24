@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "BCB",
+    "BBB"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/emberstone"
+    },
+    "B": {
+      "item": "minecraft:obsidian"
+    },
+    "C": {
+      "item": "aoa3:magic_repair_dust"
+    }
+  },
+  "result": {
+    "item": "aoa3:mending_table"
+  }
+}

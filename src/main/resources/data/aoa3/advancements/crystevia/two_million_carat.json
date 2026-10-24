@@ -1,0 +1,40 @@
+{
+  "parent": "aoa3:crystevia/the_angry_crystal",
+  "display": {
+    "icon": {
+      "item": "aoa3:gold_trophy"
+    },
+    "title": {
+      "color": "dark_green",
+      "translate": "advancements.aoa3.crystevia.two_million_carat.title"
+    },
+    "description": {
+      "color": "white",
+      "translate": "advancements.aoa3.crystevia.two_million_carat.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_gold_crystocore_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{BlockEntityTag:{EntityID:\"aoa3:crystocore\",OriginalTrophy:1b},display:{Name:'{\"translate\":\"block.aoa3.gold_trophy.desc\",\"with\":[{\"translate\":\"entity.aoa3.crystocore\"}]}'}}",
+            "items": [
+              "aoa3:gold_trophy"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_gold_crystocore_trophy"
+    ]
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:gun_frame"
+  },
+  "ingredients": [
+    {
+      "item": "aoa3:gingerbread_wing"
+    },
+    {
+      "item": "aoa3:gingerbread_cookie"
+    },
+    {
+      "tag": "forge:ingots/varsium"
+    },
+    {
+      "tag": "forge:ingots/serenadium"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "aoa3:power_core"
+    }
+  ],
+  "result": {
+    "item": "aoa3:wrecker"
+  }
+}

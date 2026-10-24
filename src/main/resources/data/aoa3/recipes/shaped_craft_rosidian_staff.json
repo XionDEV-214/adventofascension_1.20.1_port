@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B",
+    "C"
+  ],
+  "key": {
+    "A": {
+      "item": "aoa3:rosid_root"
+    },
+    "B": {
+      "tag": "forge:gems/amethyst"
+    },
+    "C": {
+      "tag": "forge:rods/serenadium"
+    }
+  },
+  "result": {
+    "item": "aoa3:rosidian_staff"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/serenadium"
+    },
+    "B": {
+      "item": "minecraft:gunpowder"
+    }
+  },
+  "result": {
+    "item": "aoa3:serenadium_bullet",
+    "count": 32
+  }
+}

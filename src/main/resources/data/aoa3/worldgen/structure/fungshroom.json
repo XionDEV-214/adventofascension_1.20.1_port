@@ -1,0 +1,15 @@
+{
+  "type": "aoa3:aoa_structure",
+  "biomes": [
+    "aoa3:fungal_caverns"
+  ],
+  "spawn_overrides": {},
+  "step": "underground_structures",
+  "terrain_adaptation": "none",
+  "start_pool": "aoa3:mysterium/fungshroom/main_pool",
+  "size": 15,
+  "placement": "underground_cave",
+  "min_y": 5,
+  "max_y": 80,
+  "ignore_obstructions": true
+}

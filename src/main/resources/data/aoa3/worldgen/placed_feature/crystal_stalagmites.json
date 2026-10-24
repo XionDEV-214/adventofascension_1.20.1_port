@@ -1,0 +1,18 @@
+{
+  "feature": "aoa3:crystal_stalagmites",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:underground_surface",
+      "maximum": 120,
+      "on_surface": true,
+      "bottom_offset": 10
+    }
+  ]
+}

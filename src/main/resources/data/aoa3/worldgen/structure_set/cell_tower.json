@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:cell_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 12,
+    "salt": 99621781
+  }
+}

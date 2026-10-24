@@ -1,0 +1,34 @@
+{
+  "type": "aoa3:configurable_carver",
+  "config": {
+    "probability": 0.7,
+    "y": {
+      "type": "minecraft:biased_to_bottom",
+      "min_inclusive": {
+        "absolute": 5
+      },
+      "max_inclusive": {
+        "absolute": 120
+      },
+      "inner": 8
+    },
+    "yScale": 1.0,
+    "lava_level": {
+      "absolute": 9
+    },
+    "replaceable": [
+      "aoa3:fungal_grass",
+      "aoa3:fungal_dirt",
+      "aoa3:fungal_rock"
+    ],
+    "horizontal_radius_multiplier": 4.0,
+    "vertical_radius_multiplier": 4.0,
+    "floor_level": -0.7,
+    "deep_filler_block": {
+      "Properties": {
+        "level": "0"
+      },
+      "Name": "minecraft:water"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "xp_modifier": 1.0,
+  "abilities": [
+    {
+      "id": "aoa3:attribute_modification",
+      "unique_id": "-555905532",
+      "base_value": 0.0,
+      "per_level_mod": 0.002,
+      "attribute": "minecraft:generic.movement_speed",
+      "operation": 1.0,
+      "level_req": 5
+    },
+    {
+      "id": "aoa3:fall_damage_reduction",
+      "unique_id": "1581623737",
+      "base_value": 0.0,
+      "min_height": 0,
+      "max_height": 10,
+      "per_level_mod": 0.0085,
+      "level_req": 15
+    },
+    {
+      "id": "aoa3:jump_boost",
+      "unique_id": "-93812277",
+      "base_value": 0.25,
+      "per_level_mod": 0.004,
+      "level_req": 25
+    },
+    {
+      "id": "aoa3:attribute_modification",
+      "unique_id": "-1239512341",
+      "base_value": 0.05,
+      "per_level_mod": 0.0,
+      "attribute": "minecraft:generic.movement_speed",
+      "operation": 1.0,
+      "level_req": 40
+    },
+    {
+      "id": "aoa3:attribute_modification",
+      "unique_id": "-1977693736",
+      "base_value": 0.0,
+      "per_level_mod": 0.003,
+      "attribute": "forge:swim_speed",
+      "operation": 1.0,
+      "level_req": 50
+    },
+    {
+      "id": "aoa3:fall_damage_reduction",
+      "unique_id": "131469337",
+      "base_value": 0.0,
+      "min_height": 11,
+      "max_height": 2147483647,
+      "per_level_mod": 0.005,
+      "level_req": 60
+    },
+    {
+      "id": "aoa3:jump_boost",
+      "unique_id": "-585227644",
+      "base_value": 0.25,
+      "amplify_lateral_velocity": true,
+      "per_level_mod": 0.0,
+      "level_req": 70
+    },
+    {
+      "id": "aoa3:attribute_modification",
+      "unique_id": "-1239513085",
+      "base_value": 0.05,
+      "per_level_mod": 0.0,
+      "attribute": "minecraft:generic.movement_speed",
+      "operation": 1.0,
+      "level_req": 80
+    },
+    {
+      "id": "aoa3:double_jump",
+      "unique_id": "1755700425",
+      "energy_consumption": 20.0,
+      "level_req": 90
+    },
+    {
+      "id": "aoa3:level_restriction",
+      "unique_id": "-1978598326",
+      "restrictions": [
+        "equip"
+      ],
+      "level_req": 100,
+      "restricted_id": "aoa3:helm_of_the_dextrous"
+    }
+  ]
+}

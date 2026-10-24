@@ -1,0 +1,16 @@
+{
+  "feature": "aoa3:crystevian_crystals",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 50
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:up_to_surface",
+      "max": 120
+    }
+  ]
+}

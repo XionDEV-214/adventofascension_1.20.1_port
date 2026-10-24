@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:mysterium",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:mysterium",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:fungal_caverns"
+    }
+  }
+}

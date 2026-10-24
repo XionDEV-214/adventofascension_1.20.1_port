@@ -1,0 +1,17 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "tag": "forge:rods/serenadium"
+  },
+  "ingredients": [
+    {
+      "item": "aoa3:damage_enhancer"
+    },
+    {
+      "item": "aoa3:divine_enhancer"
+    }
+  ],
+  "result": {
+    "item": "aoa3:vulcane"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "feature": "aoa3:inverted_achony_trees",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 2
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:underground_surface",
+      "maximum": 45,
+      "on_surface": true,
+      "on_ceiling": true,
+      "bottom_offset": 45
+    }
+  ]
+}

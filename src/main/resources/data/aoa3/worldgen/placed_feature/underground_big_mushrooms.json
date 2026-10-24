@@ -1,0 +1,14 @@
+{
+  "feature": "aoa3:underground_big_mushrooms",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:underground_surface",
+      "maximum": 80,
+      "on_surface": true,
+      "bottom_offset": 5
+    }
+  ]
+}

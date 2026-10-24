@@ -1,0 +1,148 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 3,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:plastic_stick"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:candy_tube"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 1
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:column",
+          "config": {
+            "block": {
+              "state": {
+                "Name": "aoa3:green_peppermint"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_size": 1,
+            "max_size": 5,
+            "uniform_height_distribution": false
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:column",
+          "config": {
+            "block": {
+              "state": {
+                "Name": "aoa3:red_peppermint"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_size": 1,
+            "max_size": 5,
+            "uniform_height_distribution": false
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:column",
+          "config": {
+            "block": {
+              "entries": [
+                {
+                  "weight": 10,
+                  "data": {
+                    "Name": "aoa3:blue_lollypop"
+                  }
+                },
+                {
+                  "weight": 10,
+                  "data": {
+                    "Name": "aoa3:red_lollypop"
+                  }
+                },
+                {
+                  "weight": 10,
+                  "data": {
+                    "Name": "aoa3:yellow_lollypop"
+                  }
+                }
+              ],
+              "type": "minecraft:weighted_state_provider"
+            },
+            "min_size": 1,
+            "max_size": 5,
+            "uniform_height_distribution": false
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:simple_block",
+          "config": {
+            "to_place": {
+              "type": "minecraft:simple_state_provider",
+              "state": {
+                "Name": "aoa3:candycane"
+              }
+            }
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:block_predicate_filter",
+            "predicate": {
+              "type": "minecraft:all_of",
+              "predicates": [
+                {
+                  "type": "minecraft:matching_blocks",
+                  "offset": [
+                    0,
+                    -1,
+                    0
+                  ],
+                  "blocks": [
+                    "aoa3:candied_grass"
+                  ]
+                },
+                {
+                  "type": "minecraft:matching_blocks",
+                  "blocks": [
+                    "minecraft:air"
+                  ]
+                },
+                {
+                  "type": "minecraft:matching_blocks",
+                  "offset": [
+                    0,
+                    1,
+                    0
+                  ],
+                  "blocks": [
+                    "minecraft:air"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

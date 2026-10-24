@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:explosives_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 20,
+    "separation": 6,
+    "salt": 2100908753
+  }
+}

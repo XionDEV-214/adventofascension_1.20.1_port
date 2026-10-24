@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "name": "carved_rune_blocks",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:empty",
+          "weight": 150
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 100,
+          "name": "aoa3:carved_rune_of_direction"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 100,
+          "name": "aoa3:carved_rune_of_reality"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 100,
+          "name": "aoa3:carved_rune_of_space"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 100,
+          "name": "aoa3:carved_rune_of_travel"
+        }
+      ]
+    }
+  ]
+}

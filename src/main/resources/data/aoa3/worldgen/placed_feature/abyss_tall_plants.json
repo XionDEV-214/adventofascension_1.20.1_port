@@ -1,0 +1,17 @@
+{
+  "feature": "aoa3:abyss_tall_plants",
+  "placement": [
+    {
+      "type": "minecraft:noise_threshold_count",
+      "noise_level": -0.8,
+      "below_noise": 100,
+      "above_noise": 200
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:heightmap_spread_double"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "feature": "aoa3:lelyetian_tall_plants",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 6
+    }
+  ]
+}

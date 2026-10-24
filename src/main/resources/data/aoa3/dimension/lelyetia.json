@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:lelyetia",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:lelyetia",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:lelyetian_plains"
+    }
+  }
+}

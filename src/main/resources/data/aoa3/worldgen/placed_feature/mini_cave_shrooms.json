@@ -1,0 +1,13 @@
+{
+  "feature": "aoa3:mini_cave_shrooms",
+  "placement": [
+    {
+      "type": "minecraft:carving_mask",
+      "step": "air"
+    },
+    {
+      "type": "aoa3:chance",
+      "probability": 0.005
+    }
+  ]
+}

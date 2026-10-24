@@ -1,0 +1,29 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:cannon_frame"
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingots/serenadium"
+    },
+    {
+      "tag": "forge:ingots/serenadium"
+    },
+    {
+      "item": "aoa3:void_scales"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:tnt"
+    }
+  ],
+  "result": {
+    "item": "aoa3:rpg"
+  }
+}

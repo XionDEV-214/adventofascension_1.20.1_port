@@ -1,0 +1,57 @@
+package com.deveisia.aoa3.content.loottable.modifier;
+
+import net.minecraftforge.common.loot.IGlobalLootModifier;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import com.deveisia.aoa3.content.item.LootModifyingItem;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nonnull;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraftforge.common.loot.LootModifier;
+
+public class LootModifyingItemLootModifier extends LootModifier {
+	public static final Codec<LootModifyingItemLootModifier> CODEC = RecordCodecBuilder.create(builder -> codecStart(builder).apply(builder, LootModifyingItemLootModifier::new));
+	public LootModifyingItemLootModifier(LootItemCondition[] conditions) {
+		super(conditions);
+	}
+
+	@Override
+	public Codec<? extends IGlobalLootModifier> codec() {
+		return CODEC;
+	}
+
+	@Nonnull
+	@Override
+	protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+		ItemStack tool = ItemStack.EMPTY;
+
+		if (context.hasParam(LootContextParams.TOOL)) {
+			tool = context.getParamOrNull(LootContextParams.TOOL);
+
+			if (tool == null)
+				return generatedLoot;
+		}
+		else if (context.hasParam(LootContextParams.KILLER_ENTITY)) {
+			Entity entity = context.getParamOrNull(LootContextParams.KILLER_ENTITY);
+
+			if (entity != null) {
+				Iterator<ItemStack> heldItems = entity.getHandSlots().iterator();
+
+				if (heldItems.hasNext())
+					tool = heldItems.next();
+			}
+		}
+
+		if (tool.getItem() instanceof LootModifyingItem)
+			((LootModifyingItem)tool.getItem()).doLootModification(generatedLoot, context);
+
+		return generatedLoot;
+	}
+}

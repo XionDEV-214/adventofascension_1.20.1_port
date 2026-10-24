@@ -1,0 +1,16 @@
+{
+  "feature": "aoa3:deeplands_plants",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 100
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:up_to_surface",
+      "max": 256
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:creeponia",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:creeponia",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:creepoid_forest"
+    }
+  }
+}

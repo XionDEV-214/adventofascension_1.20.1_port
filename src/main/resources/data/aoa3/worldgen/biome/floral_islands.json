@@ -1,0 +1,87 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.65,
+  "downfall": 0.75,
+  "effects": {
+    "fog_color": 0,
+    "sky_color": 7907327,
+    "water_color": 1692534,
+    "water_fog_color": 1692534,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "aoa3:flowerface",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:corny",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:sunny",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:archvine",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:squasher",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:carrotop",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:broccohead",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "aoa3:dimensional_fabric_floor"
+    ],
+    [
+      "aoa3:gardencia_lakes"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "aoa3:giant_flowers",
+      "aoa3:garden_grass",
+      "aoa3:gardencian_flowers"
+    ],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

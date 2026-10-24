@@ -1,0 +1,65 @@
+package com.deveisia.aoa3.content.item.weapon.gun;
+
+import com.deveisia.aoa3.util.RandomUtil;
+import com.deveisia.aoa3.common.registration.AoAItemGroups;
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.content.entity.projectile.gun.BaseBullet;
+import com.deveisia.aoa3.util.LocaleUtil;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.AreaEffectCloud;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class FlamingFury extends BaseGun {
+	public FlamingFury(double dmg, int durability, int firingDelayTicks, float recoil) {
+		super(AoAItemGroups.GUNS, dmg, durability, firingDelayTicks, recoil);
+	}
+
+	@Nullable
+	@Override
+	public SoundEvent getFiringSound() {
+		return AoASounds.ITEM_GUN_GENERIC_FIRE_2.get();
+	}
+
+	@Override
+	protected void doFiringEffects(LivingEntity shooter, BaseBullet bullet, ItemStack stack, InteractionHand hand) {
+		if (getFiringSound() != null)
+			shooter.level().playSound(null, shooter.getX(), shooter.getY(), shooter.getZ(), getFiringSound(), SoundSource.PLAYERS, 1.0f, 1.0f);
+
+		for (int i = 0; i < 6; i++) {
+			((ServerLevel)shooter.level()).sendParticles(ParticleTypes.DRAGON_BREATH, bullet.getX() + RandomUtil.RANDOM.source().nextGaussian() / 5d, bullet.getY() + RandomUtil.RANDOM.source().nextGaussian() / 5d, bullet.getZ() + RandomUtil.RANDOM.source().nextGaussian() / 5d, 1, 0, 0, 0, 0d);
+		}
+	}
+
+	@Override
+	protected void doImpactEffect(Entity target, LivingEntity shooter, BaseBullet bullet, float bulletDmgMultiplier) {
+		AreaEffectCloud cloud = new AreaEffectCloud(bullet.level(), (target.getX() + bullet.getX()) / 2d, (target.getY() + bullet.getY()) / 2d, (target.getZ() + bullet.getZ()) / 2d);
+
+		cloud.setOwner(shooter);
+		cloud.setParticle(ParticleTypes.DRAGON_BREATH);
+		cloud.setRadius(1f);
+		cloud.setDuration(20);
+		cloud.setRadiusPerTick((5.0F - cloud.getRadius()) / (float)cloud.getDuration());
+		cloud.addEffect(new MobEffectInstance(MobEffects.HARM, 1, 0));
+
+		bullet.level().addFreshEntity(cloud);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText(this, LocaleUtil.ItemDescriptionType.BENEFICIAL, 1));
+		super.appendHoverText(stack, world, tooltip, flag);
+	}
+}

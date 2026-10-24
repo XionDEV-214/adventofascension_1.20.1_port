@@ -1,0 +1,14 @@
+{
+  "type": "aoa3:aoa_structure",
+  "biomes": [
+    "aoa3:haven"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "start_pool": "aoa3:haven/floating_lotto_fountain/main_pool",
+  "size": 10,
+  "placement": "y_pos",
+  "min_y": 60,
+  "max_y": 130
+}

@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:vox_ponds",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:vox_ponds",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:vox_wastes"
+    }
+  }
+}

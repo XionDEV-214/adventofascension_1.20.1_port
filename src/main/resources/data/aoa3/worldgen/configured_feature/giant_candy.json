@@ -1,0 +1,16 @@
+{
+  "type": "aoa3:structure_piece",
+  "config": {
+    "spawn_entities": false,
+    "processors": {
+      "processors": []
+    },
+    "templates": [
+      "aoa3:candyland/decorations/swirl_pop1",
+      "aoa3:candyland/decorations/swirl_pop2",
+      "aoa3:candyland/decorations/giant_candy_cane",
+      "aoa3:candyland/decorations/lollypop1",
+      "aoa3:candyland/decorations/lollypop2"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "parent": "aoa3:haven/lets_rock_and_roll",
+  "display": {
+    "icon": {
+      "item": "aoa3:gold_trophy"
+    },
+    "title": {
+      "color": "dark_green",
+      "translate": "advancements.aoa3.haven.rockslide.title"
+    },
+    "description": {
+      "color": "white",
+      "translate": "advancements.aoa3.haven.rockslide.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_gold_rock_rider_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{BlockEntityTag:{EntityID:\"aoa3:rock_rider\",OriginalTrophy:1b},display:{Name:'{\"translate\":\"block.aoa3.gold_trophy.desc\",\"with\":[{\"translate\":\"entity.aoa3.rock_rider\"}]}'}}",
+            "items": [
+              "aoa3:gold_trophy"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_gold_rock_rider_trophy"
+    ]
+  ]
+}

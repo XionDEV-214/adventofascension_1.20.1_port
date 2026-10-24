@@ -1,0 +1,27 @@
+package com.deveisia.aoa3.client.render.entity.projectile.blasters;
+
+import com.deveisia.aoa3.client.render.entity.projectile.ParticleProjectileRenderer;
+import com.deveisia.aoa3.common.particletype.CustomisableParticleType;
+import com.deveisia.aoa3.common.registration.AoAParticleTypes;
+import com.deveisia.aoa3.content.entity.projectile.blaster.RainbowShotEntity;
+import com.deveisia.aoa3.util.ColourUtil;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+
+public class RainbowShotRenderer extends ParticleProjectileRenderer<RainbowShotEntity> {
+	public RainbowShotRenderer(final EntityRendererProvider.Context manager) {
+		super(manager);
+	}
+
+	@Override
+	protected void addParticles(RainbowShotEntity entity, float partialTicks) {
+		for (int i = 0; i < 3; i++) {
+			entity.level().addParticle(new CustomisableParticleType.Data(AoAParticleTypes.SPARKLER.get(), 1, 20, ColourUtil.RED), entity.getX(), entity.getY() + 1.5, entity.getZ(), 0, 0, 0);
+			entity.level().addParticle(new CustomisableParticleType.Data(AoAParticleTypes.SPARKLER.get(), 1, 20, ColourUtil.RGB(223, 153, 0)), entity.getX(), entity.getY() + 1.0, entity.getZ(), 0, 0, 0);
+			entity.level().addParticle(new CustomisableParticleType.Data(AoAParticleTypes.SPARKLER.get(), 1, 20, ColourUtil.YELLOW), entity.getX(), entity.getY() + 0.5, entity.getZ(), 0, 0, 0);
+			entity.level().addParticle(new CustomisableParticleType.Data(AoAParticleTypes.SPARKLER.get(), 1, 20, ColourUtil.GREEN), entity.getX(), entity.getY(), entity.getZ(), 0, 0, 0);
+			entity.level().addParticle(new CustomisableParticleType.Data(AoAParticleTypes.SPARKLER.get(), 1, 20, ColourUtil.CYAN), entity.getX(), entity.getY() - 0.5, entity.getZ(), 0, 0, 0);
+			entity.level().addParticle(new CustomisableParticleType.Data(AoAParticleTypes.SPARKLER.get(), 1, 20, ColourUtil.BLUE), entity.getX(), entity.getY() - 1.0, entity.getZ(), 0, 0, 0);
+			entity.level().addParticle(new CustomisableParticleType.Data(AoAParticleTypes.SPARKLER.get(), 1, 20, ColourUtil.RGB(193, 64, 215)), entity.getX(), entity.getY() - 1.5, entity.getZ(), 0, 0, 0);
+		}
+	}
+}

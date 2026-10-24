@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:mushroom_spider_cave",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 8,
+    "salt": 1703926404
+  }
+}

@@ -1,0 +1,289 @@
+package com.deveisia.aoa3.content.entity.mob.misc.doppelganger;
+
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import com.deveisia.aoa3.client.ClientOperations;
+import com.deveisia.aoa3.common.registration.*;
+import com.deveisia.aoa3.content.block.functional.misc.TrophyBlock;
+import com.deveisia.aoa3.content.entity.brain.SmartBrainHandler;
+import com.deveisia.aoa3.content.entity.brain.SmartBrainOwner;
+import com.deveisia.aoa3.content.entity.brain.task.*;
+import com.deveisia.aoa3.util.BrainUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.SpawnGroupData;
+import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.behavior.BehaviorControl;
+import net.minecraft.world.entity.ai.behavior.DoNothing;
+import net.minecraft.world.entity.ai.behavior.LookAtTargetSink;
+import net.minecraft.world.entity.ai.behavior.MeleeAttack;
+import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
+import net.minecraft.world.entity.ai.behavior.RandomStroll;
+import net.minecraft.world.entity.ai.behavior.RunOne;
+import net.minecraft.world.entity.ai.behavior.SetEntityLookTarget;
+import net.minecraft.world.entity.ai.behavior.SetWalkTargetFromAttackTargetIfTargetOutOfReach;
+import net.minecraft.world.entity.ai.behavior.StopAttackingIfTargetInvalid;
+import net.minecraft.world.entity.ai.memory.MemoryModuleType;
+import net.minecraft.world.entity.ai.sensing.Sensor;
+import net.minecraft.world.entity.ai.sensing.SensorType;
+import net.minecraft.world.entity.monster.CrossbowAttackMob;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.schedule.Activity;
+import net.minecraft.world.item.CrossbowItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ProjectileWeaponItem;
+import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
+import org.apache.commons.lang3.tuple.Triple;
+
+public class DoppelgangerEntity extends Monster implements SmartBrainOwner<DoppelgangerEntity>, CrossbowAttackMob {
+	private static final ImmutableList<SensorType<? extends Sensor<? super DoppelgangerEntity>>> SENSORS = ImmutableList.of(SensorType.NEAREST_PLAYERS, SensorType.HURT_BY, SensorType.NEAREST_LIVING_ENTITIES, AoABrainSensors.INCOMING_PROJECTILES.get());
+	private static final EntityDataAccessor<Boolean> LOADING_CROSSBOW = SynchedEntityData.defineId(DoppelgangerEntity.class, EntityDataSerializers.BOOLEAN);
+
+	private SmartBrainHandler<DoppelgangerEntity> handler;
+
+	public DoppelgangerEntity(EntityType<? extends Monster> entityType, Level world) {
+		super(entityType, world);
+	}
+
+	public DoppelgangerEntity(Level world) {
+		super(AoAEntities.Mobs.DOPPELGANGER.get(), world);
+	}
+
+	@Nullable
+	@Override
+	public SmartBrainHandler<DoppelgangerEntity> getBrainHandler() {
+		return this.handler;
+	}
+
+	@Override
+	public void setBrainHandler(SmartBrainHandler<DoppelgangerEntity> handler) {
+		this.handler = handler;
+	}
+
+	@Override
+	public ImmutableList<SensorType<? extends Sensor<? super DoppelgangerEntity>>> getSensors() {
+		return SENSORS;
+	}
+
+	@Override
+	public Brain.Provider<?> brainProvider() {
+		return getBrainHandler().getBrainCodec();
+	}
+
+	@Override
+	public Brain<?> makeBrain(Dynamic<?> codecLoader) {
+		if (getBrainHandler() == null)
+			setBrainHandler(new SmartBrainHandler<DoppelgangerEntity>(this));
+
+		return getBrainHandler().makeBrain(codecLoader);
+	}
+
+	@Override
+	public Brain<?> getBrain() {
+		return getBrainHandler().getBrain();
+	}
+
+	@Override
+	public Triple<Integer, ImmutableList<? extends BehaviorControl<? super DoppelgangerEntity>>, MemoryModuleType<?>> getCoreTasks() {
+		return Triple.of(0,
+				ImmutableList.of(
+						new LookAtTargetSink(60, 240),
+						new MoveToTargetSink()),
+				null);
+	}
+
+	@Override
+	public Triple<Integer, ImmutableList<? extends BehaviorControl<? super DoppelgangerEntity>>, MemoryModuleType<?>> getIdleTasks() {
+		return Triple.of(10,
+				ImmutableList.of(
+						new FirstSuccessfulTask<DoppelgangerEntity>(ImmutableList.of(
+								Pair.of(new RetaliateOrTargetTask<DoppelgangerEntity>(this), 1),
+								Pair.of(SetEntityLookTarget.create(EntityType.PLAYER, 8), 1),
+								Pair.of(SetEntityLookTarget.create(8), 1),
+								Pair.of(new DoNothing(30, 60), 1))),
+						new RunOne<DoppelgangerEntity>(ImmutableList.of(
+								Pair.of(RandomStroll.stroll(1f), 1),
+								Pair.of(new DoNothing(30, 60), 1)))),
+				null);
+	}
+
+	@Override
+	public Triple<Integer, ImmutableList<? extends BehaviorControl<? super DoppelgangerEntity>>, MemoryModuleType<?>> getFightTasks() {
+		return Triple.of(10,
+				ImmutableList.of(
+						StopAttackingIfTargetInvalid.create(target -> !target.isAlive() || target instanceof Player && ((Player)target).isCreative()),
+						new CounterTargetWeaponTask(),
+						MeleeAttack.create(6),
+						SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.3f)),
+				MemoryModuleType.ATTACK_TARGET);
+	}
+
+	@Override
+	public Map<Activity, Triple<Integer, ImmutableList<? extends BehaviorControl<? super DoppelgangerEntity>>, MemoryModuleType<?>>> getAdditionalTasks() {
+		return ImmutableMap.of(
+				Activity.AVOID,
+				Triple.of(0, ImmutableList.of(
+						new BlockIncomingProjectileTask(true),
+						new ParryStunlockTask<>()
+				), null));
+	}
+
+	@Override
+	public Set<Activity> getAlwaysRunningActivities() {
+		return ImmutableSet.of(Activity.CORE, Activity.AVOID);
+	}
+
+	@Override
+	public List<Activity> getActivityPriorities() {
+		return ImmutableList.of(Activity.FIGHT, Activity.IDLE);
+	}
+
+	@Override
+	protected void defineSynchedData() {
+		super.defineSynchedData();
+		this.entityData.define(LOADING_CROSSBOW, false);
+	}
+
+	@Nullable
+	@Override
+	public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance difficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+		SpawnGroupData data = super.finalizeSpawn(pLevel, difficulty, pReason, pSpawnData, pDataTag);
+
+		populateDefaultEquipmentSlots(random, difficulty);
+		populateDefaultEquipmentEnchantments(random, difficulty);
+
+		if (difficulty.getDifficulty() == Difficulty.HARD)
+			getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(new AttributeModifier("spawn_buff", 0.05f, AttributeModifier.Operation.MULTIPLY_TOTAL));
+
+		return data;
+	}
+
+	@Override
+	protected void populateDefaultEquipmentSlots(RandomSource rand, DifficultyInstance difficulty) {
+		AoAArmour.ArmourSet armourSet = AoAArmour.ALACRITY_ARMOUR;
+
+		if (difficulty.getDifficulty() == Difficulty.NORMAL || difficulty.getDifficulty() == Difficulty.HARD)
+			armourSet = AoAArmour.KNIGHT_ARMOUR;
+
+		setItemSlot(EquipmentSlot.HEAD, new ItemStack(armourSet.helmet.get()));
+		setItemSlot(EquipmentSlot.CHEST, new ItemStack(armourSet.chestplate.get()));
+		setItemSlot(EquipmentSlot.LEGS, new ItemStack(armourSet.leggings.get()));
+		setItemSlot(EquipmentSlot.FEET, new ItemStack(armourSet.boots.get()));
+	}
+
+	@Override
+	protected boolean shouldDespawnInPeaceful() {
+		return false;
+	}
+
+	@Override
+	public Component getDisplayName() {
+		if (this.level().isClientSide())
+			return ClientOperations.getPlayerName();
+
+		return super.getDisplayName();
+	}
+
+	@Override
+	protected void customServerAiStep() {
+		handler.tick();
+		super.customServerAiStep();
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSource) {
+		if (damageSource.is(DamageTypes.ON_FIRE)) {
+			return SoundEvents.PLAYER_HURT_ON_FIRE;
+		}
+		else if (damageSource.is(DamageTypes.DROWN)) {
+			return SoundEvents.PLAYER_HURT_DROWN;
+		}
+		else {
+			return damageSource.is(DamageTypes.SWEET_BERRY_BUSH) ? SoundEvents.PLAYER_HURT_SWEET_BERRY_BUSH : SoundEvents.PLAYER_HURT;
+		}
+	}
+
+	@Override
+	public boolean isBlocking() {
+		return this.isUsingItem() && !this.useItem.isEmpty() && useItem.getItem().getUseAnimation(this.useItem) == UseAnim.BLOCK;
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.PLAYER_DEATH;
+	}
+
+	@Override
+	public void setChargingCrossbow(boolean pIsCharging) {
+		this.entityData.get(LOADING_CROSSBOW);
+	}
+
+	@Override
+	public void shootCrossbowProjectile(LivingEntity target, ItemStack crossbow, Projectile bolt, float angle) {
+		shootCrossbowProjectile(this, target, bolt, angle, 1.6f);
+	}
+
+	@Nullable
+	@Override
+	public LivingEntity getTarget() {
+		return BrainUtils.getTargetOfEntity(this, super.getTarget());
+	}
+
+	@Override
+	public boolean canFireProjectileWeapon(ProjectileWeaponItem weapon) {
+		return weapon instanceof CrossbowItem;
+	}
+
+	@Override
+	public void onCrossbowAttackPerformed() {}
+
+	@Override
+	public void performRangedAttack(LivingEntity target, float distanceFactor) {
+		performCrossbowAttack(this, 1.6f);
+	}
+
+	@Override
+	protected boolean shouldDropLoot() {
+		return level().getDifficulty() == Difficulty.HARD;
+	}
+
+	@Override
+	protected void dropCustomDeathLoot(DamageSource source, int pLooting, boolean pRecentlyHit) {
+		if (level().getDifficulty() == Difficulty.HARD && lastHurtByPlayer != null) {
+			spawnAtLocation(new ItemStack(AoAWeapons.VULCAMMER_MAUL.get()));
+
+			ItemStack trophy = new ItemStack(AoABlocks.TROPHY.get());
+
+			trophy.setTag(TrophyBlock.getOriginalTrophyTag(getType(), AoABlocks.TROPHY.get()));
+			spawnAtLocation(trophy);
+		}
+	}
+}

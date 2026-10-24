@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:skeletal_army_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 36,
+    "separation": 10,
+    "salt": 648746229
+  }
+}

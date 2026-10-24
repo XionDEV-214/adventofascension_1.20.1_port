@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:replace_single_block",
+  "config": {
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:blockstate_match",
+          "block_state": {
+            "Name": "aoa3:dense_stone"
+          }
+        },
+        "state": {
+          "Name": "aoa3:deep_case"
+        }
+      }
+    ]
+  }
+}

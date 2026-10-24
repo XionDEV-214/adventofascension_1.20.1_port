@@ -1,0 +1,26 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:gun_frame"
+  },
+  "ingredients": [
+    {
+      "item": "aoa3:mushroom_spores"
+    },
+    {
+      "tag": "forge:ingots/mystite"
+    },
+    {
+      "tag": "forge:gems/amethyst"
+    },
+    {
+      "item": "aoa3:jungle_thorns"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "result": {
+    "item": "aoa3:krilinator"
+  }
+}

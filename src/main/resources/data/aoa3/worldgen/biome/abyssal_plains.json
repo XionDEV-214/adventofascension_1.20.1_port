@@ -1,0 +1,92 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.0,
+  "downfall": 0.65,
+  "effects": {
+    "fog_color": 0,
+    "sky_color": 16711680,
+    "water_color": 16711680,
+    "water_fog_color": 16711680,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "aoa3:anemia",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:bloodsucker",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:fiend",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "aoa3:apparition",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:distorter",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:web_reaper",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:occulent",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "aoa3:abyss_caves"
+    ]
+  },
+  "features": [
+    [
+      "aoa3:dimensional_fabric_floor"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "aoa3:eye_bulb_grotto"
+    ],
+    [],
+    [
+      "aoa3:abyss_tall_plants",
+      "aoa3:tubeicles",
+      "aoa3:abyss_tentacles",
+      "aoa3:abyss_trees"
+    ],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

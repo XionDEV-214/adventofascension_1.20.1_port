@@ -1,0 +1,37 @@
+package com.deveisia.aoa3.content.world.gen.feature.features;
+
+import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+import com.deveisia.aoa3.content.world.gen.feature.features.config.MiscStateAndVariablesConfig;
+import com.mojang.serialization.Codec;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.levelgen.feature.Feature;
+
+public class CubeFeature extends Feature<MiscStateAndVariablesConfig> {
+	public CubeFeature(Codec<MiscStateAndVariablesConfig> codec) {
+		super(codec);
+	}
+
+	@Override
+	public boolean place(FeaturePlaceContext<MiscStateAndVariablesConfig> context) {
+		WorldGenLevel reader = context.level();
+		ChunkGenerator generator = context.chunkGenerator();
+		RandomSource rand = context.random();
+		BlockPos pos = context.origin();
+		MiscStateAndVariablesConfig config = context.config();
+
+		BlockState state = config.stateProvider.getState(rand, pos);
+		int sizeX = config.x.getValue(rand);
+		int sizeY = config.y.getValue(rand);
+		int sizeZ = config.z.getValue(rand);
+
+		for (BlockPos placementPos : BlockPos.betweenClosed(pos, pos.offset(sizeX - 1, sizeY - 1, sizeZ - 1))) {
+			reader.setBlock(placementPos, state, 2);
+		}
+
+		return true;
+	}
+}

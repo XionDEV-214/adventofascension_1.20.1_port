@@ -1,0 +1,36 @@
+package com.deveisia.aoa3.content.item.misc;
+
+import com.deveisia.aoa3.common.registration.AoAItemGroups;
+import javax.annotation.Nullable;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraftforge.registries.RegistryObject;
+
+public class Realmstone extends Item {
+	private final RegistryObject<Block> portalBlock;
+	@Nullable
+	private final RegistryObject<SoundEvent> activationSound;
+	private final String dimensionMsgSuffix;
+
+	public Realmstone(RegistryObject<Block> portalBlock, @Nullable RegistryObject<SoundEvent> activationSound, String dimension) {
+		super(AoAItemGroups.MISC_ITEMS.properties().stacksTo(1));
+
+		this.portalBlock = portalBlock;
+		this.activationSound = activationSound;
+		this.dimensionMsgSuffix = dimension;
+	}
+
+	public RegistryObject<Block> getPortalBlock() {
+		return portalBlock;
+	}
+
+	@Nullable
+	public RegistryObject<SoundEvent> getActivationSound() {
+		return activationSound;
+	}
+
+	public String getDimensionMsgSuffix() {
+		return dimensionMsgSuffix;
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:nowhere_hub",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 1,
+    "separation": 0,
+    "salt": 1846156080
+  }
+}

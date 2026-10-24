@@ -1,0 +1,63 @@
+package com.deveisia.aoa3.content.item.misc;
+
+import com.deveisia.aoa3.common.registration.AoAItemGroups;
+import com.deveisia.aoa3.player.ServerPlayerDataManager;
+import com.deveisia.aoa3.player.skill.AoASkill;
+import com.deveisia.aoa3.util.LocaleUtil;
+import com.deveisia.aoa3.util.PlayerUtil;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class SkillCrystal extends Item {
+	private final float denominator;
+	private final int lowerLimit = 15;
+
+	public SkillCrystal(float denominator) {
+		this(denominator, Rarity.COMMON);
+	}
+
+	public SkillCrystal(float denominator, Rarity rarity) {
+		super(AoAItemGroups.MISC_ITEMS.properties().rarity(rarity));
+
+		this.denominator = denominator;
+	}
+
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+		ItemStack heldStack = player.getItemInHand(hand);
+
+		if (player instanceof ServerPlayer) {
+			ServerPlayerDataManager plData = PlayerUtil.getAdventPlayer((ServerPlayer)player);
+			AoASkill skill = PlayerUtil.getLowestSkillWithLimit(plData, lowerLimit);
+
+			if (skill != null) {
+				plData.getSkill(skill).adjustXp(PlayerUtil.getXpForFractionOfLevel(plData.getSkill(skill).getLevel(true), 1 / denominator), false, true);
+
+				if (!player.isCreative())
+					heldStack.shrink(1);
+			}
+			else {
+				PlayerUtil.notifyPlayer(plData.player(), Component.translatable("message.feedback.item.skillCrystal.levelFail", Integer.toString(lowerLimit)));
+			}
+		}
+
+		return InteractionResultHolder.pass(heldStack);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText("items.description.skillCrystal.desc.1", LocaleUtil.ItemDescriptionType.NEUTRAL));
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText("items.description.skillCrystal.desc.2", LocaleUtil.ItemDescriptionType.NEUTRAL, Component.literal(Integer.toString(lowerLimit))));
+	}
+}

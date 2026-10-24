@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ingots/baronyte",
+    "#forge:ingots/blazium",
+    "#forge:ingots/elecanium",
+    "#forge:ingots/emberstone",
+    "#forge:ingots/ghastly",
+    "#forge:ingots/ghoulish",
+    "#forge:ingots/serenadium",
+    "aoa3:lunar_ingot",
+    "#forge:ingots/lyon",
+    "#forge:ingots/mystite",
+    "#forge:ingots/rosite",
+    "#forge:ingots/shyrestone",
+    "aoa3:skeletal_ingot",
+    "#forge:ingots/varsium"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:random_chance",
+      "chance": 0.0004
+    },
+    {
+      "condition": "aoa3:has_block_tag",
+      "require_all": false,
+      "tags": [
+        "minecraft:crops"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "aoa3:gardener",
+      "Count": 1
+    }
+  ],
+  "type": "aoa3:add_items"
+}

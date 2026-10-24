@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:runic_arena",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 14,
+    "salt": 1114327163
+  }
+}

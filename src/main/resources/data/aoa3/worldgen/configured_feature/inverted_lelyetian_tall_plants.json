@@ -1,0 +1,77 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 14,
+            "uniform_height_distribution": false,
+            "upside_down": true,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:lelyetian_wiggler"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:lelyetian_wiggler_bottom"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 2
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "aoa3:underground_surface",
+            "maximum": 45,
+            "on_surface": true,
+            "on_ceiling": true,
+            "bottom_offset": 45
+          }
+        ]
+      },
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 14,
+            "uniform_height_distribution": false,
+            "upside_down": true,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:lelyetian_stem"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:lelyetian_stem_cap_down"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 2
+          }
+        },
+        "placement": [
+          {
+            "type": "minecraft:in_square"
+          },
+          {
+            "type": "aoa3:underground_surface",
+            "maximum": 45,
+            "on_surface": true,
+            "on_ceiling": true,
+            "bottom_offset": 45
+          }
+        ]
+      }
+    ]
+  }
+}

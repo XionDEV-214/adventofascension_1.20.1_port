@@ -1,0 +1,32 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:blaster_frame"
+  },
+  "ingredients": [
+    {
+      "tag": "forge:gems/shyregem"
+    },
+    {
+      "tag": "forge:gems/shyregem"
+    },
+    {
+      "tag": "forge:gems/shyregem"
+    },
+    {
+      "tag": "forge:ingots/shyrestone"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "minecraft:end_rod"
+    }
+  ],
+  "result": {
+    "item": "aoa3:paralyzer"
+  }
+}

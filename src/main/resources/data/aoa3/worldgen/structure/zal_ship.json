@@ -1,0 +1,32 @@
+{
+  "type": "aoa3:aoa_structure",
+  "biomes": [
+    "aoa3:asteroid_belt"
+  ],
+  "spawn_overrides": {
+    "creature": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "aoa3:zal_child",
+          "weight": 3,
+          "minCount": 1,
+          "maxCount": 3
+        },
+        {
+          "type": "aoa3:zal_citizen",
+          "weight": 5,
+          "minCount": 1,
+          "maxCount": 1
+        }
+      ]
+    }
+  },
+  "step": "surface_structures",
+  "terrain_adaptation": "none",
+  "start_pool": "aoa3:lunalus/zal_ship/main_pool",
+  "size": 10,
+  "placement": "y_pos",
+  "min_y": 20,
+  "max_y": 200
+}

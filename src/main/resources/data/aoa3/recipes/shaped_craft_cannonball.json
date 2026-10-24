@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/serenadium"
+    }
+  },
+  "result": {
+    "item": "aoa3:cannonball",
+    "count": 12
+  }
+}

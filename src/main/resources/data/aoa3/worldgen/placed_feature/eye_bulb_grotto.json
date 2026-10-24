@@ -1,0 +1,21 @@
+{
+  "feature": "aoa3:eye_bulb_grotto",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 400
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "aoa3:offset",
+      "direction": "down",
+      "amount": 11
+    }
+  ]
+}

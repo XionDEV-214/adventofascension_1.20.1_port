@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ACA",
+    "ABA",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "item": "aoa3:coral_stone"
+    },
+    "B": {
+      "tag": "forge:rods/serenadium"
+    },
+    "C": {
+      "item": "aoa3:pink_coral"
+    }
+  },
+  "result": {
+    "item": "aoa3:coralstone_maul"
+  }
+}

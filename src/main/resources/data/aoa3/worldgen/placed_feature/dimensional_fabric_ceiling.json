@@ -1,0 +1,17 @@
+{
+  "feature": "aoa3:dimensional_fabric_ceiling",
+  "placement": [
+    {
+      "type": "aoa3:all_z"
+    },
+    {
+      "type": "aoa3:all_x"
+    },
+    {
+      "type": "aoa3:y_fill_ceiling",
+      "bottom_offset": 4,
+      "top_offset": 0,
+      "maximum": 0
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Ores",
+  "category": "aoa3:abyss",
+  "icon": "",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "anchor": "bloodstone_ore",
+      "text": "$(thing)Bloodstone Ore$() can be found anywhere beneath the surface of the $(thing)Abyss$(). They drop $(thing)Bloodstones$() when mined. You can get more by using the Fortune enchantment.",
+      "title": "Bloodstone Ore"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "text": "",
+      "item": "gtceu:bloodstone_ore"
+    }
+  ],
+  "advancement": "aoa3:abyss/root",
+  "sortnum": 0
+}

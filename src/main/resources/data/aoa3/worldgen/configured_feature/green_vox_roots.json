@@ -1,0 +1,19 @@
+{
+  "type": "aoa3:bendy_column",
+  "config": {
+    "z": {},
+    "inverted": true,
+    "states": {
+      "state": {
+        "Name": "aoa3:tentacle_green"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "count": {
+      "min": 3,
+      "max": 7
+    },
+    "x": {},
+    "y": {}
+  }
+}

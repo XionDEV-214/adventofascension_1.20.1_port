@@ -1,0 +1,40 @@
+{
+  "parent": "aoa3:lborean/the_winged_lizard",
+  "display": {
+    "icon": {
+      "item": "aoa3:gold_trophy"
+    },
+    "title": {
+      "color": "dark_green",
+      "translate": "advancements.aoa3.lborean.used_dragon_rage.title"
+    },
+    "description": {
+      "color": "white",
+      "translate": "advancements.aoa3.lborean.used_dragon_rage.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_gold_dracyon_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{BlockEntityTag:{EntityID:\"aoa3:dracyon\",OriginalTrophy:1b},display:{Name:'{\"translate\":\"block.aoa3.gold_trophy.desc\",\"with\":[{\"translate\":\"entity.aoa3.dracyon\"}]}'}}",
+            "items": [
+              "aoa3:gold_trophy"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_gold_dracyon_trophy"
+    ]
+  ]
+}

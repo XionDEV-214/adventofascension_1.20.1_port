@@ -1,0 +1,106 @@
+{
+  "has_precipitation": false,
+  "temperature": 1.65,
+  "downfall": 0.15,
+  "effects": {
+    "fog_color": 16772520,
+    "sky_color": 55551,
+    "water_color": 50175,
+    "water_fog_color": 50175,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "aoa3:soulscorne",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:soulvyre",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:stimulo",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:axiolight",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:arc_flower",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:arcbeast",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:stimulosus",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:shyre_knight",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:sysker",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:omnilight",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "aoa3:shyre_crust"
+    ],
+    [],
+    [],
+    [],
+    [
+      "aoa3:shyrelands_large_decorations",
+      "aoa3:shyrelands_underground_decorations",
+      "aoa3:shyrelands_misc_decorations"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "aoa3:shyre_trees",
+      "aoa3:shyrelands_plants"
+    ],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

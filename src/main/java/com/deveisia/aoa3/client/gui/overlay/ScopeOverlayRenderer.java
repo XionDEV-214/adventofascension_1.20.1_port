@@ -1,0 +1,74 @@
+package com.deveisia.aoa3.client.gui.overlay;
+
+import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
+import com.deveisia.aoa3.content.item.weapon.sniper.BaseSniper;
+import com.deveisia.aoa3.util.RenderUtil;
+import net.minecraft.client.CameraType;
+import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
+import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.client.event.RenderHandEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
+
+public final class ScopeOverlayRenderer {
+	public static boolean isScoped = false;
+
+	public static void init() {
+		final IEventBus bus = MinecraftForge.EVENT_BUS;
+
+		bus.addListener(EventPriority.NORMAL, false, ComputeFovModifierEvent.class, ScopeOverlayRenderer::onFOVUpdate);
+		bus.addListener(EventPriority.NORMAL, false, RenderHandEvent.class, ScopeOverlayRenderer::onHandRender);
+		bus.addListener(EventPriority.NORMAL, false, RenderGuiOverlayEvent.Pre.class, ScopeOverlayRenderer::beforeOverlayRender);
+		bus.addListener(EventPriority.NORMAL, false, RenderGuiOverlayEvent.Post.class, ScopeOverlayRenderer::afterOverlayRender);
+	}
+
+	private static void onFOVUpdate(final ComputeFovModifierEvent event) {
+		if (isScoped && Minecraft.getInstance().options.getCameraType() == CameraType.FIRST_PERSON)
+			event.setNewFovModifier(0.2f);
+	}
+
+	private static void onHandRender(final RenderHandEvent event) {
+		if (isScoped && Minecraft.getInstance().options.getCameraType() == CameraType.FIRST_PERSON)
+			event.setCanceled(true);
+	}
+
+	private static void beforeOverlayRender(final RenderGuiOverlayEvent.Pre event) {
+		if (isScoped && event.getOverlay() == VanillaGuiOverlay.CROSSHAIR.type() && Minecraft.getInstance().options.getCameraType() == CameraType.FIRST_PERSON)
+			event.setCanceled(true);
+	}
+
+	private static void afterOverlayRender(final RenderGuiOverlayEvent.Post event) {
+		if (event.getOverlay() != VanillaGuiOverlay.HELMET.type() || Minecraft.getInstance().options.getCameraType() != CameraType.FIRST_PERSON)
+			return;
+
+		Minecraft mc = Minecraft.getInstance();
+		ResourceLocation texture = null;
+
+		if (mc.player.isShiftKeyDown() && mc.player.onGround()) {
+			ItemStack sniper = mc.player.getItemInHand(InteractionHand.MAIN_HAND);
+
+			if (sniper.getItem() instanceof BaseSniper) {
+				isScoped = true;
+				texture = ((BaseSniper)sniper.getItem()).getScopeTexture(sniper);
+			}
+			else {
+				isScoped = false;
+			}
+		}
+		else {
+			isScoped = false;
+		}
+
+		if (!isScoped)
+			return;
+
+		RenderSystem.setShaderTexture(0, texture);
+		RenderUtil.renderFullscreenTexture();
+	}
+}

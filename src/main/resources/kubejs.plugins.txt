@@ -1,0 +1,1 @@
+com.deveisia.aoa3.integration.kubejs.AoAKubeJSPlugin

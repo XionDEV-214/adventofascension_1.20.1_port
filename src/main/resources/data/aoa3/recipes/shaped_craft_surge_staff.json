@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ADA",
+    " C ",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "item": "aoa3:power_rune"
+    },
+    "B": {
+      "tag": "forge:rods/serenadium"
+    },
+    "C": {
+      "item": "aoa3:hardened_confetti_ball"
+    },
+    "D": {
+      "tag": "forge:gems/sapphire"
+    }
+  },
+  "result": {
+    "item": "aoa3:surge_staff"
+  }
+}

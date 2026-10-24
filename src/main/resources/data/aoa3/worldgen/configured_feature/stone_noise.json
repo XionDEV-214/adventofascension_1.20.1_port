@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "aoa3:no_context_block",
+          "config": {
+            "state": {
+              "Name": "minecraft:stone"
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:no_context_block",
+          "config": {
+            "state": {
+              "Name": "minecraft:andesite"
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:no_context_block",
+          "config": {
+            "state": {
+              "Name": "minecraft:cobblestone"
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:no_context_block",
+          "config": {
+            "state": {
+              "Name": "minecraft:diorite"
+            }
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

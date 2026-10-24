@@ -1,0 +1,48 @@
+package com.deveisia.aoa3.content.entity.mob.nowhere;
+
+import com.deveisia.aoa3.content.entity.base.AoAMeleeMob;
+import javax.annotation.Nullable;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.Level;
+
+public class GoldumEntity extends AoAMeleeMob {
+	public GoldumEntity(EntityType<? extends Monster> entityType, Level world) {
+		super(entityType, world);
+	}
+
+	@Override
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+		return 1.5f;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return null;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return SoundEvents.IRON_GOLEM_HURT;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.IRON_GOLEM_DEATH;
+	}
+
+	@Nullable
+	@Override
+	protected ResourceLocation getDefaultLootTable() {
+		return null;
+	}
+}

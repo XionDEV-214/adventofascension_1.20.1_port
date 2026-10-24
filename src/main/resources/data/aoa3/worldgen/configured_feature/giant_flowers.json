@@ -1,0 +1,18 @@
+{
+  "type": "aoa3:structure_piece",
+  "config": {
+    "spawn_entities": false,
+    "processors": {
+      "processors": []
+    },
+    "templates": [
+      "aoa3:gardencia/decorations/blue_starflower",
+      "aoa3:gardencia/decorations/magenta_tulip",
+      "aoa3:gardencia/decorations/purple_tulip",
+      "aoa3:gardencia/decorations/rose_starflower",
+      "aoa3:gardencia/decorations/rose_tree",
+      "aoa3:gardencia/decorations/sunflower",
+      "aoa3:gardencia/decorations/blue_tulip"
+    ]
+  }
+}

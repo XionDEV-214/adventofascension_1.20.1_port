@@ -1,0 +1,78 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.85,
+  "downfall": 0.4,
+  "effects": {
+    "fog_color": 3289650,
+    "sky_color": 3289650,
+    "water_color": 16775597,
+    "water_fog_color": 16775597,
+    "grass_color_modifier": "none",
+    "music": {
+      "sound": "aoa3:biome.iromine.music",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    }
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "aoa3:mechachron",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:polytom",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:mechamaton",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:voltron",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "aoa3:iromine_caves"
+    ]
+  },
+  "features": [
+    [
+      "aoa3:dimensional_fabric_floor"
+    ],
+    [],
+    [
+      "aoa3:iro_floaters"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "aoa3:iromine_plants",
+      "aoa3:iromine_trees"
+    ],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

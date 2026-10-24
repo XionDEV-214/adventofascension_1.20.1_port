@@ -1,0 +1,73 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.4,
+  "downfall": 0.85,
+  "effects": {
+    "fog_color": 0,
+    "sky_color": 9437439,
+    "water_color": 5780366,
+    "water_fog_color": 5780366,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "aoa3:fungat",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:fungung",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:fungback",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:fungik",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {
+    "air": [
+      "aoa3:mysterium_caves"
+    ]
+  },
+  "features": [
+    [
+      "aoa3:dimensional_fabric_floor"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "aoa3:mixed_mushroom_patches",
+      "aoa3:tiny_shrooms",
+      "aoa3:underground_big_mushrooms",
+      "aoa3:mini_cave_shrooms",
+      "aoa3:mysterium_plants"
+    ],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

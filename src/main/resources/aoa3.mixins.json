@@ -1,0 +1,44 @@
+{
+  "required": true,
+  "package": "com.deveisia.aoa3.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "aoa3.refmap.json",
+  "mixins": [
+    "common.accessor.AbstractArrowAccessor",
+    "common.accessor.ArrowAccessor",
+    "common.accessor.BehaviorAccessor",
+    "common.accessor.BlockBehaviourAccessor",
+    "common.accessor.BrainAccessor",
+    "common.accessor.CombatTrackerAccessor",
+    "common.accessor.CraftingMenuAccessor",
+    "common.accessor.LivingEntityAccessor",
+    "common.accessor.MobEffectInstanceAccessor",
+    "common.accessor.PlayerAccessor",
+    "common.accessor.ProjectileAccessor",
+    "common.accessor.RangedAttributeAccessor",
+    "common.accessor.ServerPlayerGameModeAccessor",
+    "common.accessor.ServerWorldAccessor",
+    "common.accessor.VillagerAccessor",
+    "common.function.AbstractFurnaceContainerMixin",
+    "common.function.FurnaceResultSlotMixin",
+    "common.function.WorkbenchContainerMixin",
+    "common.patch.BiomeMixin",
+    "common.patch.ItemMixin",
+    "common.patch.PlayerFlyingSpeedMixin",
+    "common.patch.ServerPlayNetHandlerMixin"
+  ],
+  "client": [
+    "client.accessor.GuiAccessor",
+    "client.accessor.SoundEngineAccessor",
+    "client.accessor.SoundManagerAccessor",
+    "client.patch.ClientPlayerEntityMixin",
+    "client.patch.GameRendererMixin",
+    "client.patch.PlayerRendererMixin",
+    "client.patch.ServerWorldInfoMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1,
+    "maxShiftBy": 2
+  },
+  "minVersion": "0.8"
+}

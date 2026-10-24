@@ -1,0 +1,42 @@
+package com.deveisia.aoa3.content.entity.mob.barathos;
+
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.content.entity.base.AoAMeleeMob;
+import javax.annotation.Nullable;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.Level;
+
+public class NospikeEntity extends AoAMeleeMob {
+	public NospikeEntity(EntityType<? extends Monster> entityType, Level world) {
+		super(entityType, world);
+
+		isSlipperyMovement = true;
+		setSpeed(3.7f);
+	}
+
+	@Override
+	protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+		return sizeIn.height * 0.85f;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return AoASounds.ENTITY_NOSPIKE_AMBIENT.get();
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return AoASounds.ENTITY_NOSPIKE_DEATH.get();
+	}
+
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return AoASounds.ENTITY_NOSPIKE_HURT.get();
+	}
+}

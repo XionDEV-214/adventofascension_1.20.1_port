@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:crystevia",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:crystevia",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:crystevian_caverns"
+    }
+  }
+}

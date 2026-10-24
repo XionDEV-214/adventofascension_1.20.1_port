@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DCD",
+    " A ",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/ghoulish"
+    },
+    "B": {
+      "tag": "forge:rods/serenadium"
+    },
+    "C": {
+      "tag": "forge:gems/sapphire"
+    },
+    "D": {
+      "item": "aoa3:ghoulasm"
+    }
+  },
+  "result": {
+    "item": "aoa3:moonlight_staff"
+  }
+}

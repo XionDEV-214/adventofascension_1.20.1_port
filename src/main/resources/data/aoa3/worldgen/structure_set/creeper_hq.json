@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:creeper_hq",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 37,
+    "separation": 12,
+    "salt": 2108286998
+  }
+}

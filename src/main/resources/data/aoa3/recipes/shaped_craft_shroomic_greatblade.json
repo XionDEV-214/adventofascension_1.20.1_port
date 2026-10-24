@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "ABA",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "item": "aoa3:mushroom_spores"
+    },
+    "B": {
+      "tag": "forge:rods/serenadium"
+    }
+  },
+  "result": {
+    "item": "aoa3:shroomic_greatblade"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DCD",
+    " A ",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:ingots/emberstone"
+    },
+    "B": {
+      "tag": "forge:rods/serenadium"
+    },
+    "C": {
+      "item": "aoa3:flammable_dust"
+    },
+    "D": {
+      "item": "aoa3:wind_rune"
+    }
+  },
+  "result": {
+    "item": "aoa3:ember_staff"
+  }
+}

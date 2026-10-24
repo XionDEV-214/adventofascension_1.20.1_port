@@ -1,0 +1,154 @@
+package com.deveisia.aoa3.content.entity.boss;
+
+import com.deveisia.aoa3.common.packet.AoAPackets;
+import com.deveisia.aoa3.common.packet.packets.MusicPacket;
+import com.deveisia.aoa3.common.registration.AoAEntities;
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.content.entity.base.AoAMeleeMob;
+import com.deveisia.aoa3.content.entity.mob.misc.BaneCloneEntity;
+import com.deveisia.aoa3.content.entity.mob.misc.BigBaneCloneEntity;
+import com.deveisia.aoa3.library.builder.EffectBuilder;
+import com.deveisia.aoa3.util.EntityUtil;
+import com.deveisia.aoa3.util.LocaleUtil;
+import com.deveisia.aoa3.util.PlayerUtil;
+import java.util.HashSet;
+import javax.annotation.Nullable;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.BossEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+
+public class BaneEntity extends AoAMeleeMob {
+	private final HashSet<AoAMeleeMob> summons = new HashSet<AoAMeleeMob>();
+	private final ServerBossEvent bossInfo = (ServerBossEvent)(new ServerBossEvent(getType().getDescription().copy().append(getDisplayName()), BossEvent.BossBarColor.GREEN, BossEvent.BossBarOverlay.NOTCHED_20)).setDarkenScreen(false).setCreateWorldFog(false);
+
+	public BaneEntity(EntityType<? extends Monster> entityType, Level world) {
+		super(entityType, world);
+	}
+
+	@Override
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
+		return 1.1875f;
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return AoASounds.ENTITY_BANE_AMBIENT.get();
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getDeathSound() {
+		return AoASounds.ENTITY_BANE_DEATH.get();
+	}
+
+	@Nullable
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return AoASounds.ENTITY_BANE_AMBIENT.get();
+	}
+
+	@Override
+	public boolean canChangeDimensions() {
+		return false;
+	}
+
+	@Override
+	public void tick() {
+		super.tick();
+
+		if (level().isClientSide)
+			return;
+
+		if (random.nextInt(200) == 0) {
+			for (int i = 0; i < 6; i++) {
+				BaneCloneEntity clone = new BaneCloneEntity(this);
+
+				summons.add(clone);
+				level().addFreshEntity(clone);
+			}
+		}
+		else if (random.nextInt(300) == 0) {
+			BigBaneCloneEntity bigClone = new BigBaneCloneEntity(this);
+
+			summons.add(bigClone);
+			level().addFreshEntity(bigClone);
+		}
+
+		float healthPercent = getHealth() / getMaxHealth();
+
+		if (healthPercent != bossInfo.getProgress())
+			bossInfo.setProgress(healthPercent);
+	}
+
+	@Override
+	protected void onAttack(Entity target) {
+		EntityUtil.applyPotions(this, new EffectBuilder(MobEffects.INVISIBILITY, 40));
+		EntityUtil.applyPotions(target, new EffectBuilder(MobEffects.MOVEMENT_SLOWDOWN, 80).level(2));
+	}
+
+	@Override
+	public void die(DamageSource cause) {
+		super.die(cause);
+
+		if (!level().isClientSide) {
+			Player killer = PlayerUtil.getPlayerOrOwnerIfApplicable(cause.getEntity());
+
+			if (killer != null)
+				PlayerUtil.messageAllPlayersInRange(LocaleUtil.getLocaleMessage(AoAEntities.Mobs.BANE.get().getDescriptionId() + ".kill", killer.getDisplayName()), level(), blockPosition(), 50);
+
+			for (AoAMeleeMob summon : summons) {
+				if (summon != null)
+					summon.discard();
+			}
+		}
+	}
+
+	@Override
+	public boolean startRiding(Entity entity, boolean force) {
+		return false;
+	}
+
+	@Override
+	public void readAdditionalSaveData(CompoundTag compound) {
+		super.readAdditionalSaveData(compound);
+
+		if (hasCustomName())
+			bossInfo.setName(getType().getDescription().copy().append(getDisplayName()));
+	}
+
+	@Override
+	public void setCustomName(@Nullable Component name) {
+		super.setCustomName(name);
+
+		bossInfo.setName(getType().getDescription().copy().append(getDisplayName()));
+	}
+
+	@Override
+	public void startSeenByPlayer(ServerPlayer player) {
+		super.startSeenByPlayer(player);
+
+		AoAPackets.messagePlayer(player, new MusicPacket(true, AoASounds.BANE_MUSIC.getId()));
+		bossInfo.addPlayer(player);
+	}
+
+	@Override
+	public void stopSeenByPlayer(ServerPlayer player) {
+		super.stopSeenByPlayer(player);
+
+		AoAPackets.messagePlayer(player, new MusicPacket(false, AoASounds.BANE_MUSIC.getId()));
+		bossInfo.removePlayer(player);
+	}
+}

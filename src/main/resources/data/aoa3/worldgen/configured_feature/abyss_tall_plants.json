@@ -1,0 +1,67 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 8,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:blood_pine_stem"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:blood_pine"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 1
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 8,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:eye_shrub_stem"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:eye_shrub"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 1
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:column",
+          "config": {
+            "block": {
+              "state": {
+                "Name": "aoa3:blood_spikes"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_size": 3,
+            "max_size": 6
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

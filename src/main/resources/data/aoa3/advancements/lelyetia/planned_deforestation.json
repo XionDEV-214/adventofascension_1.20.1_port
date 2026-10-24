@@ -1,0 +1,40 @@
+{
+  "parent": "aoa3:lelyetia/your_home_is_mine",
+  "display": {
+    "icon": {
+      "item": "aoa3:gold_trophy"
+    },
+    "title": {
+      "color": "dark_green",
+      "translate": "advancements.aoa3.lelyetia.planned_deforestation.title"
+    },
+    "description": {
+      "color": "white",
+      "translate": "advancements.aoa3.lelyetia.planned_deforestation.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_gold_graw_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{BlockEntityTag:{EntityID:\"aoa3:graw\",OriginalTrophy:1b},display:{Name:'{\"translate\":\"block.aoa3.gold_trophy.desc\",\"with\":[{\"translate\":\"entity.aoa3.graw\"}]}'}}",
+            "items": [
+              "aoa3:gold_trophy"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_gold_graw_trophy"
+    ]
+  ]
+}

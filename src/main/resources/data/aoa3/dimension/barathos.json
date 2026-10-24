@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:barathos",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:barathos",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:barren_grounds"
+    }
+  }
+}

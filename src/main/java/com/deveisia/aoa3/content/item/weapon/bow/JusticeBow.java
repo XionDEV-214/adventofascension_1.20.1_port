@@ -1,0 +1,34 @@
+package com.deveisia.aoa3.content.item.weapon.bow;
+
+import com.deveisia.aoa3.content.entity.projectile.arrow.CustomArrowEntity;
+import com.deveisia.aoa3.util.LocaleUtil;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class JusticeBow extends BaseBow {
+	public JusticeBow(double damage, float drawSpeedMultiplier, int durability) {
+		super(damage, drawSpeedMultiplier, durability);
+	}
+
+	@Override
+	public double getArrowDamage(CustomArrowEntity arrow, Entity target, double currentDamage, float drawStrength, boolean isCritical) {
+		Entity shooter = arrow.getOwner();
+
+		if (shooter instanceof LivingEntity && ((LivingEntity)shooter).getLastHurtByMob() == target)
+			return super.getArrowDamage(arrow, target, currentDamage, drawStrength, isCritical) * 1.25f;
+
+		return super.getArrowDamage(arrow, target, currentDamage, drawStrength, isCritical);
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText(this, LocaleUtil.ItemDescriptionType.BENEFICIAL, 1));
+		super.appendHoverText(stack, world, tooltip, flag);
+	}
+}

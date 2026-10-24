@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A",
+    "B",
+    "C"
+  ],
+  "key": {
+    "A": {
+      "tag": "forge:gems/bloodstone"
+    },
+    "B": {
+      "item": "aoa3:nightmare_flakes"
+    },
+    "C": {
+      "tag": "forge:rods/serenadium"
+    }
+  },
+  "result": {
+    "item": "aoa3:underworld_staff"
+  }
+}

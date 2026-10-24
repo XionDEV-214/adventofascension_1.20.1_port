@@ -1,0 +1,210 @@
+package com.deveisia.aoa3.content.block.functional.misc;
+
+import com.deveisia.aoa3.advent.Logging;
+import com.deveisia.aoa3.common.registration.AoABlocks;
+import com.deveisia.aoa3.content.block.WaterloggableBlock;
+import com.deveisia.aoa3.content.block.tileentity.TrophyTileEntity;
+import com.deveisia.aoa3.library.compat.Material;
+import com.deveisia.aoa3.library.compat.ToolType;
+import com.deveisia.aoa3.util.BlockUtil;
+import com.deveisia.aoa3.util.LocaleUtil;
+import com.deveisia.aoa3.util.RegistryUtil;
+import com.deveisia.aoa3.util.WorldUtil;
+import javax.annotation.Nullable;
+import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import com.deveisia.aoa3.common.registration.AoATileEntities;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+public class TrophyBlock extends WaterloggableBlock implements EntityBlock {
+	private static final VoxelShape BASE_SHAPE = Block.box(4, 0, 4, 12, 2, 12);
+	private static final VoxelShape MIDDLE_SHAPE = Block.box(5, 2, 5, 11, 9, 11);
+	private static final VoxelShape TOP_SHAPE = Block.box(4.5, 9, 4.5, 11.5, 11, 11.5);
+	private static final VoxelShape FULL_AABB = Shapes.or(BASE_SHAPE, MIDDLE_SHAPE, TOP_SHAPE);
+
+	public TrophyBlock() {
+		super(new BlockUtil.CompactProperties(Material.HEAVY_METAL, MapColor.STONE).stats(10f, 2000f).sound(SoundType.STONE).get());
+	}
+
+	@Override
+	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
+		return FULL_AABB;
+	}
+
+	@Nullable
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new TrophyTileEntity(pos, state);
+	}
+
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+		return type == AoATileEntities.TROPHY.get() ? (tickLevel, pos, tickState, blockEntity) -> ((TrophyTileEntity)blockEntity).tick() : null;
+	}
+
+	@Override
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+		if (stack.hasTag()) {
+			CompoundTag tag = stack.getTag();
+
+			if (tag.contains("BlockEntityTag")) {
+				CompoundTag dataTag = tag.getCompound("BlockEntityTag");
+
+				if (dataTag.contains("EntityID", Tag.TAG_STRING)) {
+					BlockEntity tile = world.getBlockEntity(pos);
+
+					if (tile instanceof TrophyTileEntity)
+						((TrophyTileEntity)tile).setEntity(dataTag.getString("EntityID"), dataTag.contains("OriginalTrophy") && !dataTag.getBoolean("OriginalTrophy"));
+				}
+			}
+		}
+	}
+
+	@Override
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		ItemStack heldStack = player.getItemInHand(hand);
+
+		if (!WorldUtil.canModifyBlock(world, pos, player, heldStack))
+			return InteractionResult.FAIL;
+
+		if (heldStack.getItem() instanceof SpawnEggItem) {
+			BlockEntity tile = world.getBlockEntity(pos);
+			SpawnEggItem egg = (SpawnEggItem)heldStack.getItem();
+
+			if (tile instanceof TrophyTileEntity) {
+				((TrophyTileEntity)tile).setEntity(RegistryUtil.getId(egg.getType(heldStack.getTag())).toString(), true);
+
+				if (!world.isClientSide() && !player.isCreative())
+					heldStack.shrink(1);
+			}
+
+			return InteractionResult.SUCCESS;
+		}
+
+		return InteractionResult.PASS;
+	}
+
+	@Override
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+		ItemStack stack = new ItemStack(asItem());
+		BlockEntity tile = world.getBlockEntity(pos);
+		TrophyTileEntity trophyTile;
+
+		if (tile instanceof TrophyTileEntity && ((trophyTile = (TrophyTileEntity)tile).getEntityId() != null)) {
+			CompoundTag nbt = new CompoundTag();
+			CompoundTag dataTag = new CompoundTag();
+
+			dataTag.putString("EntityID", ((TrophyTileEntity)tile).getEntityId());
+			dataTag.putBoolean("OriginalTrophy", ((TrophyTileEntity)tile).isOriginal());
+			nbt.put("BlockEntityTag", dataTag);
+
+			stack.setTag(nbt);
+
+			if (trophyTile.getCachedEntity() != null || dataTag.getString("EntityID").equals("minecraft:player")) {
+				Entity cachedEntity = trophyTile.getCachedEntity();
+				Component entityName = cachedEntity == null ? Component.translatable("entity.minecraft.player") : cachedEntity.getName();
+				stack.setHoverName(LocaleUtil.getLocaleMessage("block.aoa3.trophy.desc", entityName));
+			}
+		}
+
+		return stack;
+	}
+
+	public static CompoundTag getTagForEntity(EntityType<?> entity) {
+		CompoundTag nbt = new CompoundTag();
+		CompoundTag dataTag = new CompoundTag();
+
+		dataTag.putString("EntityID", RegistryUtil.getId(entity).toString());
+		dataTag.putBoolean("OriginalTrophy", true);
+		nbt.put("BlockEntityTag", dataTag);
+
+		return nbt;
+	}
+
+	public static ItemStack cloneTrophy(ItemStack sourceTrophy, ItemLike destTrophy) {
+		CompoundTag sourceTag = sourceTrophy.getOrCreateTag();
+		ItemStack newStack = new ItemStack(destTrophy.asItem());
+		CompoundTag destTag = newStack.getOrCreateTag();
+
+		try {
+			if (sourceTag.isEmpty())
+				return newStack;
+
+			if (sourceTag.contains("BlockEntityTag"))
+				destTag.put("BlockEntityTag", sourceTag.getCompound("BlockEntityTag"));
+
+			if (sourceTag.contains("display")) {
+				CompoundTag displayTag = new CompoundTag();
+				String localePrefix = "block.aoa3.trophy.desc";
+
+				if (destTrophy == AoABlocks.GOLD_TROPHY.get()) {
+					localePrefix = "block.aoa3.gold_trophy.desc";
+				}
+				else if (destTrophy == AoABlocks.ORNATE_TROPHY.get()) {
+					localePrefix = "block.aoa3.ornate_trophy.desc";
+				}
+
+				if (sourceTag.contains("BlockEntityTag")) {
+					displayTag.putString("Name", Component.Serializer.toJson(Component.translatable(localePrefix, Component.translatable(Util.makeDescriptionId("entity", ResourceLocation.parse(sourceTag.getCompound("BlockEntityTag").getString("EntityID")))))));
+				}
+				else {
+					displayTag = sourceTag.getCompound("display");
+				}
+
+				destTag.put("display", displayTag);
+			}
+		}
+		catch (Exception ex) {
+			Logging.logMessage(org.apache.logging.log4j.Level.ERROR, "Failed to clone trophy data.", ex);
+		}
+
+		return newStack;
+	}
+
+	public static CompoundTag getOriginalTrophyTag(EntityType<?> entity, Block trophyBlock) {
+		CompoundTag tag = TrophyBlock.getTagForEntity(entity);
+		CompoundTag displayTag = new CompoundTag();
+		String localePrefix = "block.aoa3.trophy.desc";
+
+		if (trophyBlock == AoABlocks.GOLD_TROPHY.get()) {
+			localePrefix = "block.aoa3.gold_trophy.desc";
+		}
+		else if (trophyBlock == AoABlocks.ORNATE_TROPHY.get()) {
+			localePrefix = "block.aoa3.ornate_trophy.desc";
+		}
+
+		displayTag.putString("Name", Component.Serializer.toJson(Component.translatable(localePrefix, Component.translatable(entity.getDescriptionId()))));
+		tag.put("display", displayTag);
+
+		return tag;
+	}
+}

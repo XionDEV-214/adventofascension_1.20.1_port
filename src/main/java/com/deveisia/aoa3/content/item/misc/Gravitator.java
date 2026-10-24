@@ -1,0 +1,75 @@
+package com.deveisia.aoa3.content.item.misc;
+
+import com.deveisia.aoa3.common.registration.AoADimensions;
+import com.deveisia.aoa3.common.registration.AoAItemGroups;
+import com.deveisia.aoa3.common.registration.AoAItems;
+import com.deveisia.aoa3.util.ItemUtil;
+import com.deveisia.aoa3.util.LocaleUtil;
+import com.deveisia.aoa3.util.RandomUtil;
+import com.deveisia.aoa3.util.WorldUtil;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class Gravitator extends Item {
+	public Gravitator() {
+		super(AoAItemGroups.MISC_ITEMS.properties().durability(1500));
+	}
+
+	@Override
+	public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+		return false;
+	}
+
+	@Override
+	public void inventoryTick(ItemStack stack, Level world, Entity entity, int itemSlot, boolean isSelected) {
+		if (isSelected && entity instanceof LivingEntity) {
+			if (entity.getDeltaMovement().y() < -0.079) {
+				entity.setDeltaMovement(entity.getDeltaMovement().multiply(1, 0.8f, 1));
+				entity.fallDistance *= 0.8f;
+
+				if (RandomUtil.oneInNChance(15) && (!(entity instanceof Player) || !((Player)entity).isCreative()))
+					ItemUtil.damageItem(stack, (LivingEntity)entity, 1, EquipmentSlot.MAINHAND);
+			}
+
+			if (!world.isClientSide) {
+				if (WorldUtil.isWorld(world, AoADimensions.HAVEN.key) && !entity.onGround() && world.getGameTime() % 5 == 0 && entity instanceof Player) {
+					Player pl = (Player)entity;
+
+					if (pl.isCreative())
+						return;
+
+					BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos(entity.blockPosition().getX(), entity.blockPosition().getY(), entity.blockPosition().getZ());
+
+					for (ItemStack invStack : pl.getInventory().items) {
+						if (invStack.getItem() == AoAItems.BLANK_REALMSTONE.get()) {
+							for (int i = 0; i < entity.getY(); i++) {
+								if (!world.isEmptyBlock(pos.set(pos.getX(), pos.getY() - i, pos.getZ())))
+									return;
+							}
+
+							invStack.shrink(1);
+							ItemUtil.givePlayerItemOrDrop(pl, new ItemStack(AoAItems.LUNALUS_REALMSTONE.get()));
+
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText(this, LocaleUtil.ItemDescriptionType.NEUTRAL, 1));
+	}
+}

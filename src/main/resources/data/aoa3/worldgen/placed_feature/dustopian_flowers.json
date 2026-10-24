@@ -1,0 +1,9 @@
+{
+  "feature": "aoa3:dustopian_flowers",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 20
+    }
+  ]
+}

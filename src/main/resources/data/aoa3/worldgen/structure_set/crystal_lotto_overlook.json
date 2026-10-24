@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:crystal_lotto_overlook",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 24,
+    "separation": 6,
+    "salt": 1667083058
+  }
+}

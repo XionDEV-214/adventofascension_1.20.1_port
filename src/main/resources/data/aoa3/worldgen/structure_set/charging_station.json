@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:charging_station",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 18,
+    "separation": 8,
+    "salt": 109344848
+  }
+}

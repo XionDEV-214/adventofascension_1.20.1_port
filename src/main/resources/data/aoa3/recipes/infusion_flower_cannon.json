@@ -1,0 +1,32 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:cannon_frame"
+  },
+  "ingredients": [
+    {
+      "item": "aoa3:small_green_petal"
+    },
+    {
+      "item": "aoa3:rosid_root"
+    },
+    {
+      "tag": "forge:ingots/serenadium"
+    },
+    {
+      "tag": "forge:ingots/serenadium"
+    },
+    {
+      "tag": "forge:gems/jade"
+    },
+    {
+      "item": "aoa3:sticky_slime"
+    },
+    {
+      "item": "minecraft:dandelion"
+    }
+  ],
+  "result": {
+    "item": "aoa3:flower_cannon"
+  }
+}

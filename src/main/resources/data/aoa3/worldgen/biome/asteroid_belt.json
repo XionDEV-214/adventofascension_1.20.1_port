@@ -1,0 +1,44 @@
+{
+  "has_precipitation": false,
+  "temperature": -1.0,
+  "downfall": 0.0,
+  "effects": {
+    "fog_color": 0,
+    "sky_color": 0,
+    "water_color": 20,
+    "water_fog_color": 20,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [
+      "aoa3:stone_blobs",
+      "aoa3:stone_noise"
+    ],
+    [],
+    [
+      "aoa3:lunalus_large_decorations",
+      "aoa3:lunar_geodes",
+      "aoa3:lunalus_misc_decorations",
+      "aoa3:basalt_asteroid1"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

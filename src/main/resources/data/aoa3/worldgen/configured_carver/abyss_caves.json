@@ -1,0 +1,30 @@
+{
+  "type": "aoa3:configurable_carver",
+  "config": {
+    "probability": 0.14285715,
+    "y": {
+      "type": "minecraft:biased_to_bottom",
+      "min_inclusive": {
+        "absolute": 5
+      },
+      "max_inclusive": {
+        "absolute": 127
+      },
+      "inner": 8
+    },
+    "yScale": 1.0,
+    "lava_level": {
+      "absolute": 9
+    },
+    "replaceable": [
+      "aoa3:abyssal_grass",
+      "aoa3:abyssal_stone"
+    ],
+    "horizontal_radius_multiplier": 1.0,
+    "vertical_radius_multiplier": 1.0,
+    "floor_level": -0.7,
+    "deep_filler_block": {
+      "Name": "aoa3:toxic_block"
+    }
+  }
+}

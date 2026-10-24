@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:celeve",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:celeve",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:celevian_highlands"
+    }
+  }
+}

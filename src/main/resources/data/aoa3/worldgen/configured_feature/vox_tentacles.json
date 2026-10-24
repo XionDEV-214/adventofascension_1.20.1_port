@@ -1,0 +1,19 @@
+{
+  "type": "aoa3:capped_column",
+  "config": {
+    "max_stem_size": 4,
+    "stem_block": {
+      "state": {
+        "Name": "aoa3:vox_tentacles_stem"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "cap_block": {
+      "state": {
+        "Name": "aoa3:vox_tentacles"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "min_stem_size": 1
+  }
+}

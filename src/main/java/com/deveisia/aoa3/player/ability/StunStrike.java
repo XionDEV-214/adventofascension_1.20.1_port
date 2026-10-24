@@ -1,0 +1,123 @@
+package com.deveisia.aoa3.player.ability;
+
+import com.deveisia.aoa3.util.LocaleUtil;
+import com.deveisia.aoa3.mixin.common.accessor.LivingEntityAccessor;
+import com.deveisia.aoa3.client.AoAKeybinds;
+import com.deveisia.aoa3.common.registration.custom.AoAAbilities;
+import com.deveisia.aoa3.common.registration.custom.AoAResources;
+import com.deveisia.aoa3.library.builder.EffectBuilder;
+import com.deveisia.aoa3.player.skill.AoASkill;
+import com.deveisia.aoa3.scheduling.AoAScheduler;
+import com.deveisia.aoa3.util.*;
+import com.google.gson.JsonObject;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.GsonHelper;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
+
+public class StunStrike extends AoAAbility.Instance {
+	private static final ListenerType[] LISTENERS = new ListenerType[] {ListenerType.KEY_INPUT, ListenerType.OUTGOING_ATTACK_AFTER};
+
+	private final float energyCost;
+	private final int stunDuration;
+
+	private boolean primedAttack = false;
+
+	public StunStrike(AoASkill.Instance skill, JsonObject data) {
+		super(AoAAbilities.STUN_STRIKE.get(), skill, data);
+
+		this.energyCost = GsonHelper.getAsFloat(data, "energy_cost");
+		this.stunDuration = GsonHelper.getAsInt(data, "stun_duration", 20);
+	}
+
+	public StunStrike(AoASkill.Instance skill, CompoundTag data) {
+		super(AoAAbilities.STUN_STRIKE.get(), skill, data);
+
+		this.energyCost = data.getFloat("energy_cost");
+		this.stunDuration = data.getInt("stun_duration");
+	}
+
+	@Override
+	protected void updateDescription(MutableComponent defaultDescription) {
+		super.updateDescription(Component.translatable(LocaleUtil.getKey(defaultDescription), NumberUtil.roundToNthDecimalPlace(this.stunDuration / 20f, 2), NumberUtil.roundToNthDecimalPlace(this.energyCost, 2)));
+	}
+
+	@Override
+	public ListenerType[] getListenerTypes() {
+		return LISTENERS;
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	@Override
+	public KeyMapping getKeybind() {
+		return AoAKeybinds.ABILITY_ACTION;
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	@Override
+	public boolean shouldSendKeyPress() {
+		LocalPlayer pl = Minecraft.getInstance().player;
+
+		return !pl.input.hasForwardImpulse() && pl.input.leftImpulse == 0 && !pl.getItemInHand(InteractionHand.OFF_HAND).isEmpty() && PlayerUtil.getResourceValue(pl, AoAResources.ENERGY.get()) >= this.energyCost;
+	}
+
+	@Override
+	public void handleKeyInput() {
+		ServerPlayer player = getPlayer();
+
+		if (!primedAttack && skill.getPlayerDataManager().getResource(AoAResources.ENERGY.get()).hasAmount(this.energyCost)) {
+			this.primedAttack = true;
+
+			activatedActionKey(player);
+		}
+	}
+
+	@Override
+	public void handlePostOutgoingAttack(LivingDamageEvent ev) {
+		if (ev.getAmount() > 0 && primedAttack && DamageUtil.isMeleeDamage(ev.getSource()) && !getPlayer().getItemInHand(InteractionHand.OFF_HAND).isEmpty()) {
+			this.primedAttack = false;
+
+			if (skill.getPlayerDataManager().getResource(AoAResources.ENERGY.get()).consume(this.energyCost, true)) {
+				ServerPlayer player = getPlayer();
+				LivingEntity target = ev.getEntity();
+
+				AoAScheduler.scheduleSyncronisedTask(() -> {
+					player.swing(InteractionHand.OFF_HAND, true);
+
+					if (target != null && target.isAlive()) {
+						if (player.distanceToSqr(target) < 36 && player.hasLineOfSight(target)) {
+							DamageUtil.doScaledKnockback(target, player, 0.5f, player.getX() - target.getX(), player.getZ() - target.getZ());
+							EntityUtil.applyPotions(target, new EffectBuilder(MobEffects.MOVEMENT_SLOWDOWN, this.stunDuration).level(127), new EffectBuilder(MobEffects.DIG_SLOWDOWN, this.stunDuration).level(127));
+							activatedActionKey(player);
+
+							if (skill.canGainXp(true))
+								skill.adjustXp(PlayerUtil.getTimeBasedXpForLevel(skill.getLevel(true), 30), false, false);
+						}
+					}
+				}, ((LivingEntityAccessor)player).invokeGetCurrentSwingDuration() - 1);
+			}
+		}
+	}
+
+	@Override
+	public CompoundTag getSyncData(boolean forClientSetup) {
+		CompoundTag data = super.getSyncData(forClientSetup);
+
+		if (forClientSetup) {
+			data.putFloat("energy_cost", this.energyCost);
+			data.putFloat("stun_duration", this.stunDuration);
+		}
+
+		return data;
+	}
+}

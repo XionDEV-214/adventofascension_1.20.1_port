@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:precasia",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:precasia",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:precasian_tall_forest"
+    }
+  }
+}

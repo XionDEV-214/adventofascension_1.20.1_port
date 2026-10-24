@@ -1,0 +1,23 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:gun_frame"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "tag": "forge:ingots/baronyte"
+    },
+    {
+      "tag": "forge:ingots/varsium"
+    },
+    {
+      "item": "aoa3:grenade"
+    }
+  ],
+  "result": {
+    "item": "aoa3:baronator"
+  }
+}

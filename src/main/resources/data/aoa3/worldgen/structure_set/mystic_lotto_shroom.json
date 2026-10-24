@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:mystic_lotto_shroom",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 8,
+    "salt": 1941286008
+  }
+}

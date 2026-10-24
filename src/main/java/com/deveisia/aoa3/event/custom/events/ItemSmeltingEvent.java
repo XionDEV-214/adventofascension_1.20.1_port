@@ -1,0 +1,29 @@
+package com.deveisia.aoa3.event.custom.events;
+
+import javax.annotation.Nonnull;
+import net.minecraft.world.Container;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.entity.player.PlayerEvent;
+
+public class ItemSmeltingEvent extends PlayerEvent {
+	@Nonnull
+	private final ItemStack outputStack;
+	private final Container outputSlotInventory;
+
+	public ItemSmeltingEvent(Player player, @Nonnull ItemStack smelting, Container outputSlotInventory) {
+		super(player);
+
+		this.outputStack = smelting;
+		this.outputSlotInventory = outputSlotInventory;
+	}
+
+	@Nonnull
+	public ItemStack getOutputStack() {
+		return this.outputStack;
+	}
+
+	public Container getSlotInventory() {
+		return this.outputSlotInventory;
+	}
+}

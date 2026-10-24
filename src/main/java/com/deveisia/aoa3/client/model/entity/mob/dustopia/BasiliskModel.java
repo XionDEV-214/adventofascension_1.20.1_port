@@ -1,0 +1,196 @@
+package com.deveisia.aoa3.client.model.entity.mob.dustopia;
+
+import com.deveisia.aoa3.client.model.compat.LegacyModelPart;
+import com.deveisia.aoa3.client.model.compat.LegacyEntityModel;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Mob;
+
+public class BasiliskModel extends LegacyEntityModel<Mob> {
+	private final LegacyModelPart head;
+	private final LegacyModelPart body;
+	private final LegacyModelPart leg1;
+	private final LegacyModelPart leg2;
+	private final LegacyModelPart leg3;
+	private final LegacyModelPart leg4;
+	private final LegacyModelPart leg4p2;
+	private final LegacyModelPart leg2p2;
+	private final LegacyModelPart leg1p2;
+	private final LegacyModelPart leg3p2;
+	private final LegacyModelPart head2;
+	private final LegacyModelPart head3;
+	private final LegacyModelPart head4;
+	private final LegacyModelPart head5;
+	private final LegacyModelPart head6;
+	private final LegacyModelPart head7;
+	private final LegacyModelPart head8;
+	private final LegacyModelPart head9;
+	private final LegacyModelPart head10;
+	private final LegacyModelPart head11;
+	private final LegacyModelPart head12;
+	private final LegacyModelPart body2;
+
+	public BasiliskModel() {
+		texWidth = 128;
+		texHeight = 32;
+		(head = new LegacyModelPart(this, 0, 13)).addBox(5.0f, -3.0f, -6.0f, 1, 8, 6);
+		head.setPos(0.0f, 6.0f, -3.0f);
+		head.setTexSize(128, 32);
+		head.mirror = true;
+		setRotation(head, 0.0f, 0.0f, 0.0f);
+		(body = new LegacyModelPart(this, 83, 4)).addBox(-6.0f, -10.0f, -7.0f, 4, 18, 10);
+		body.setPos(4.0f, 0.0f, 7.0f);
+		body.setTexSize(128, 32);
+		body.mirror = true;
+		setRotation(body, 2.181662f, 0.0f, 0.0f);
+		(leg1 = new LegacyModelPart(this, 74, 1)).addBox(1.0f, 0.0f, -2.0f, 4, 4, 4);
+		leg1.setPos(-9.0f, 1.0f, 12.0f);
+		leg1.setTexSize(128, 32);
+		leg1.mirror = true;
+		setRotation(leg1, 0.0f, 0.0f, 0.0f);
+		(leg2 = new LegacyModelPart(this, 74, 1)).addBox(-5.0f, 0.0f, -2.0f, 4, 4, 4);
+		leg2.setPos(9.0f, 1.0f, 12.0f);
+		leg2.setTexSize(128, 32);
+		leg2.mirror = true;
+		setRotation(leg2, 0.0f, 0.0f, 0.0f);
+		(leg3 = new LegacyModelPart(this, 74, 1)).addBox(1.0f, 0.0f, -3.0f, 4, 4, 4);
+		leg3.setPos(-9.0f, 1.0f, 1.0f);
+		leg3.setTexSize(128, 32);
+		leg3.mirror = true;
+		setRotation(leg3, 0.0f, 0.0f, 0.0f);
+		(leg4 = new LegacyModelPart(this, 74, 1)).addBox(-5.0f, 0.0f, -3.0f, 4, 4, 4);
+		leg4.setPos(9.0f, 1.0f, 1.0f);
+		leg4.setTexSize(128, 32);
+		leg4.mirror = true;
+		setRotation(leg4, 0.0f, 0.0f, 0.0f);
+		(leg4p2 = new LegacyModelPart(this, 112, 5)).addBox(-1.0f, 0.0f, -3.0f, 4, 23, 4);
+		leg4p2.setPos(9.0f, 1.0f, 1.0f);
+		leg4p2.setTexSize(128, 32);
+		leg4p2.mirror = true;
+		setRotation(leg4p2, 0.0f, 0.0f, 0.0f);
+		(leg2p2 = new LegacyModelPart(this, 112, 5)).addBox(-1.0f, 0.0f, -2.0f, 4, 23, 4);
+		leg2p2.setPos(9.0f, 1.0f, 12.0f);
+		leg2p2.setTexSize(128, 32);
+		leg2p2.mirror = true;
+		setRotation(leg2p2, 0.0f, 0.0f, 0.0f);
+		(leg1p2 = new LegacyModelPart(this, 112, 5)).addBox(-3.0f, 0.0f, -2.0f, 4, 23, 4);
+		leg1p2.setPos(-9.0f, 1.0f, 12.0f);
+		leg1p2.setTexSize(128, 32);
+		leg1p2.mirror = true;
+		setRotation(leg1p2, 0.0f, 0.0f, 0.0f);
+		(leg3p2 = new LegacyModelPart(this, 112, 5)).addBox(-3.0f, 0.0f, -3.0f, 4, 23, 4);
+		leg3p2.setPos(-9.0f, 1.0f, 1.0f);
+		leg3p2.setTexSize(128, 32);
+		leg3p2.mirror = true;
+		setRotation(leg3p2, 0.0f, 0.0f, 0.0f);
+		(head2 = new LegacyModelPart(this, 0, 28)).addBox(1.0f, 3.0f, -6.0f, 1, 2, 1);
+		head2.setPos(0.0f, 6.0f, -3.0f);
+		head2.setTexSize(128, 32);
+		head2.mirror = true;
+		setRotation(head2, 0.0f, 0.0f, 0.0f);
+		(head3 = new LegacyModelPart(this, 0, 0)).addBox(-6.0f, 5.0f, -6.0f, 12, 1, 6);
+		head3.setPos(0.0f, 6.0f, -3.0f);
+		head3.setTexSize(128, 32);
+		head3.mirror = true;
+		setRotation(head3, 0.0f, 0.0f, 0.0f);
+		(head4 = new LegacyModelPart(this, 0, 13)).addBox(-6.0f, -3.0f, -6.0f, 1, 8, 6);
+		head4.setPos(0.0f, 6.0f, -3.0f);
+		head4.setTexSize(128, 32);
+		head4.mirror = true;
+		setRotation(head4, 0.0f, 0.0f, 0.0f);
+		(head5 = new LegacyModelPart(this, 0, 0)).addBox(-6.0f, -4.0f, -6.0f, 12, 1, 6);
+		head5.setPos(0.0f, 6.0f, -3.0f);
+		head5.setTexSize(128, 32);
+		head5.mirror = true;
+		setRotation(head5, 0.0f, 0.0f, 0.0f);
+		(head6 = new LegacyModelPart(this, 0, 28)).addBox(-4.0f, 3.0f, -6.0f, 1, 2, 1);
+		head6.setPos(0.0f, 6.0f, -3.0f);
+		head6.setTexSize(128, 32);
+		head6.mirror = true;
+		setRotation(head6, 0.0f, 0.0f, 0.0f);
+		(head7 = new LegacyModelPart(this, 0, 28)).addBox(-2.0f, 3.0f, -6.0f, 1, 2, 1);
+		head7.setPos(0.0f, 6.0f, -3.0f);
+		head7.setTexSize(128, 32);
+		head7.mirror = true;
+		setRotation(head7, 0.0f, 0.0f, 0.0f);
+		(head8 = new LegacyModelPart(this, 0, 28)).addBox(3.0f, 3.0f, -6.0f, 1, 2, 1);
+		head8.setPos(0.0f, 6.0f, -3.0f);
+		head8.setTexSize(128, 32);
+		head8.mirror = true;
+		setRotation(head8, 0.0f, 0.0f, 0.0f);
+		(head9 = new LegacyModelPart(this, 0, 28)).addBox(1.0f, -3.0f, -6.0f, 1, 2, 1);
+		head9.setPos(0.0f, 6.0f, -3.0f);
+		head9.setTexSize(128, 32);
+		head9.mirror = true;
+		setRotation(head9, 0.0f, 0.0f, 0.0f);
+		(head10 = new LegacyModelPart(this, 0, 28)).addBox(3.0f, -3.0f, -6.0f, 1, 2, 1);
+		head10.setPos(0.0f, 6.0f, -3.0f);
+		head10.setTexSize(128, 32);
+		head10.mirror = true;
+		setRotation(head10, 0.0f, 0.0f, 0.0f);
+		(head11 = new LegacyModelPart(this, 0, 28)).addBox(-2.0f, -3.0f, -6.0f, 1, 2, 1);
+		head11.setPos(0.0f, 6.0f, -3.0f);
+		head11.setTexSize(128, 32);
+		head11.mirror = true;
+		setRotation(head11, 0.0f, 0.0f, 0.0f);
+		(head12 = new LegacyModelPart(this, 0, 28)).addBox(-4.0f, -3.0f, -6.0f, 1, 2, 1);
+		head12.setPos(0.0f, 6.0f, -3.0f);
+		head12.setTexSize(128, 32);
+		head12.mirror = true;
+		setRotation(head12, 0.0f, 0.0f, 0.0f);
+		(body2 = new LegacyModelPart(this, 36, 4)).addBox(-6.0f, -10.0f, -7.0f, 12, 18, 10);
+		body2.setPos(0.0f, 5.0f, 7.0f);
+		body2.setTexSize(128, 32);
+		body2.mirror = true;
+		setRotation(body2, 1.570796f, 0.0f, 0.0f);
+	}
+
+	@Override
+	public void renderToBuffer(PoseStack matrix, VertexConsumer buffer, int light, int overlay, float red, float green, float blue, float alpha) {
+		head.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		body.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg1.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg2.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg3.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg4.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg4p2.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg2p2.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg1p2.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		leg3p2.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head2.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head3.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head4.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head5.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head6.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head7.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head8.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head9.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head10.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head11.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		head12.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+		body2.render(matrix, buffer, light, overlay, red, green, blue, alpha);
+	}
+
+	private void setRotation(final LegacyModelPart model, final float x, final float y, final float z) {
+		model.xRot = x;
+		model.yRot = y;
+		model.zRot = z;
+	}
+
+	@Override
+	public void setupAnim(Mob entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+		leg1p2.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount;
+		leg1p2.yRot = 0.0f;
+		leg3p2.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount;
+		leg3p2.yRot = 0.0f;
+		leg1.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount;
+		leg1.yRot = 0.0f;
+		leg3.xRot = Mth.cos(limbSwing * 0.6662f) * 1.4f * limbSwingAmount;
+		leg3.yRot = 0.0f;
+		leg2p2.xRot = Mth.cos(limbSwing * 0.6662f + 3.1415927f) * 1.4f * limbSwingAmount;
+		leg4p2.xRot = Mth.cos(limbSwing * 0.6662f + 3.1415927f) * 1.4f * limbSwingAmount;
+		leg2.xRot = Mth.cos(limbSwing * 0.6662f + 3.1415927f) * 1.4f * limbSwingAmount;
+		leg4.xRot = Mth.cos(limbSwing * 0.6662f + 3.1415927f) * 1.4f * limbSwingAmount;
+	}
+}

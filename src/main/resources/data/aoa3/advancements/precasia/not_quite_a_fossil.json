@@ -1,0 +1,40 @@
+{
+  "parent": "aoa3:precasia/jungle_rumble",
+  "display": {
+    "icon": {
+      "item": "aoa3:gold_trophy"
+    },
+    "title": {
+      "color": "dark_green",
+      "translate": "advancements.aoa3.precasia.not_quite_a_fossil.title"
+    },
+    "description": {
+      "color": "white",
+      "translate": "advancements.aoa3.precasia.not_quite_a_fossil.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_gold_tyrosaur_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "nbt": "{BlockEntityTag:{EntityID:\"aoa3:tyrosaur\",OriginalTrophy:1b},display:{Name:'{\"translate\":\"block.aoa3.gold_trophy.desc\",\"with\":[{\"translate\":\"entity.aoa3.tyrosaur\"}]}'}}",
+            "items": [
+              "aoa3:gold_trophy"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "obtain_gold_tyrosaur_trophy"
+    ]
+  ]
+}

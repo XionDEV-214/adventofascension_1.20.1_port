@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "aoa3:magic_aoe_absolute",
+    "aoa3:magic_piercing",
+    "aoa3:magic_absolute",
+    "aoa3:blaster_piercing",
+    "aoa3:blaster_absolute",
+    "aoa3:melee_absolute",
+    "aoa3:self_harm",
+    "aoa3:vulcane",
+    "aoa3:hauling",
+    "aoa3:recoil",
+    "aoa3:special_absolute",
+    "aoa3:suffocation",
+    "aoa3:vox_ponds"
+  ]
+}

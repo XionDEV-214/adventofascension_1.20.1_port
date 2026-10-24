@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:runic_portal_hollow",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 20,
+    "separation": 12,
+    "salt": 97879083
+  }
+}

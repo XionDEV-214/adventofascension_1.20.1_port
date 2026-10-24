@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "ACA",
+    " B "
+  ],
+  "key": {
+    "A": {
+      "item": "aoa3:floating_stone"
+    },
+    "B": {
+      "tag": "forge:rods/serenadium"
+    },
+    "C": {
+      "tag": "forge:gems/crystallite"
+    }
+  },
+  "result": {
+    "item": "aoa3:sky_staff"
+  }
+}

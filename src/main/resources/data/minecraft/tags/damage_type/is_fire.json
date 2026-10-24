@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "aoa3:mob_fire_melee",
+    "aoa3:mob_fire_ranged"
+  ]
+}

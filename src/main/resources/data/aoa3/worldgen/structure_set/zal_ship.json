@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:zal_ship",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 60,
+    "separation": 40,
+    "salt": 729642039
+  }
+}

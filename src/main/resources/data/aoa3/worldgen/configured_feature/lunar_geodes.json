@@ -1,0 +1,125 @@
+{
+  "type": "aoa3:structure_piece",
+  "config": {
+    "spawn_entities": false,
+    "require_ground": false,
+    "processors": {
+      "processors": [
+        {
+          "rules": [
+            {
+              "output_state": {
+                "Name": "minecraft:spawner"
+              },
+              "input_predicate": {
+                "block": "minecraft:coal_ore",
+                "probability": 0.01,
+                "predicate_type": "minecraft:random_block_match"
+              },
+              "location_predicate": {
+                "predicate_type": "minecraft:always_true"
+              },
+              "block_entity_modifier": {
+                "type": "minecraft:append_static",
+                "data": {
+                  "MaxNearbyEntities": 5,
+                  "RequiredPlayerRange": 16,
+                  "SpawnCount": 1,
+                  "SpawnData": {
+                    "entity": {
+                      "id": "aoa3:explodot"
+                    }
+                  },
+                  "MaxSpawnDelay": 400,
+                  "SpawnRange": 1,
+                  "Delay": 20,
+                  "MinSpawnDelay": 100,
+                  "SpawnPotentials": [
+                    {
+                      "weight": 1,
+                      "data": {
+                        "entity": {
+                          "id": "aoa3:explodot"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "output_state": {
+                "Name": "minecraft:emerald_ore"
+              },
+              "input_predicate": {
+                "block": "minecraft:coal_ore",
+                "probability": 0.05,
+                "predicate_type": "minecraft:random_block_match"
+              },
+              "location_predicate": {
+                "predicate_type": "minecraft:always_true"
+              }
+            },
+            {
+              "output_state": {
+                "Name": "minecraft:diamond_ore"
+              },
+              "input_predicate": {
+                "block": "minecraft:coal_ore",
+                "probability": 0.11,
+                "predicate_type": "minecraft:random_block_match"
+              },
+              "location_predicate": {
+                "predicate_type": "minecraft:always_true"
+              }
+            },
+            {
+              "output_state": {
+                "Name": "minecraft:lapis_ore"
+              },
+              "input_predicate": {
+                "block": "minecraft:coal_ore",
+                "probability": 0.14,
+                "predicate_type": "minecraft:random_block_match"
+              },
+              "location_predicate": {
+                "predicate_type": "minecraft:always_true"
+              }
+            },
+            {
+              "output_state": {
+                "Name": "minecraft:gold_ore"
+              },
+              "input_predicate": {
+                "block": "minecraft:coal_ore",
+                "probability": 0.19,
+                "predicate_type": "minecraft:random_block_match"
+              },
+              "location_predicate": {
+                "predicate_type": "minecraft:always_true"
+              }
+            },
+            {
+              "output_state": {
+                "Name": "minecraft:iron_ore"
+              },
+              "input_predicate": {
+                "block": "minecraft:coal_ore",
+                "probability": 0.22,
+                "predicate_type": "minecraft:random_block_match"
+              },
+              "location_predicate": {
+                "predicate_type": "minecraft:always_true"
+              }
+            }
+          ],
+          "processor_type": "minecraft:rule"
+        }
+      ]
+    },
+    "templates": [
+      "aoa3:lunalus/decorations/lunar_geode1",
+      "aoa3:lunalus/decorations/lunar_geode2"
+    ]
+  }
+}

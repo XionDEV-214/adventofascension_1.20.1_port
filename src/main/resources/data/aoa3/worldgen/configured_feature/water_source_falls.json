@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:liquid_drain",
+  "config": {
+    "fluid": {
+      "Properties": {
+        "falling": "true"
+      },
+      "Name": "minecraft:water"
+    }
+  }
+}

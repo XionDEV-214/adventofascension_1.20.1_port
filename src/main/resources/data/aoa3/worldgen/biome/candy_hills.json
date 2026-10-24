@@ -1,0 +1,83 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.5,
+  "downfall": 0.5,
+  "effects": {
+    "fog_color": 9961727,
+    "sky_color": 12255471,
+    "water_color": 10040115,
+    "water_fog_color": 10040115,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "aoa3:lollypopper",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:airhead",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:cherry_blaster",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:candy_corny",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [
+      {
+        "type": "aoa3:spearmint_snail",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "aoa3:peppermint_snail",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [
+      "aoa3:dimensional_fabric_floor"
+    ],
+    [],
+    [
+      "aoa3:giant_candy",
+      "aoa3:chocolate_bars"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "aoa3:candy_grass",
+      "aoa3:candy_plants",
+      "aoa3:cotton_candy_trees"
+    ],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:magic",
+    "minecraft:indirect_magic",
+    "aoa3:magic_aoe",
+    "aoa3:magic_aoe_absolute",
+    "aoa3:magic",
+    "aoa3:magic_piercing",
+    "aoa3:magic_absolute",
+    "aoa3:blaster",
+    "aoa3:blaster_piercing",
+    "aoa3:blaster_absolute",
+    "aoa3:mob_magic_ranged"
+  ]
+}

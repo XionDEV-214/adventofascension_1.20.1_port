@@ -1,0 +1,26 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:shotgun_frame"
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingots/baronyte"
+    },
+    {
+      "tag": "forge:ingots/baronyte"
+    },
+    {
+      "tag": "forge:ingots/blazium"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "result": {
+    "item": "aoa3:red_rocket"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:yellow_crystal_transfer_hut",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 40,
+    "separation": 12,
+    "salt": 1002737725
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "feature": "aoa3:dimensional_fabric_floor",
+  "placement": [
+    {
+      "type": "aoa3:all_z"
+    },
+    {
+      "type": "aoa3:all_x"
+    },
+    {
+      "type": "aoa3:y_fill",
+      "bottom_offset": 0,
+      "top_offset": 0,
+      "maximum": 4
+    }
+  ]
+}

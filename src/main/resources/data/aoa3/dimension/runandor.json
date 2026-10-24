@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:runandor",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:runandor",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:runic_cliffs"
+    }
+  }
+}

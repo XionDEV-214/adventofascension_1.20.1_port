@@ -1,0 +1,31 @@
+package com.deveisia.aoa3.content.item.weapon.crossbow;
+
+import com.deveisia.aoa3.content.entity.projectile.arrow.CustomArrowEntity;
+import com.deveisia.aoa3.library.builder.EffectBuilder;
+import com.deveisia.aoa3.util.EntityUtil;
+import com.deveisia.aoa3.util.LocaleUtil;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class ViralCrossbow extends BaseCrossbow {
+	public ViralCrossbow(double damage, int durability) {
+		super(damage, durability);
+	}
+
+	@Override
+	public void onEntityHit(CustomArrowEntity arrow, Entity target, Entity shooter, double damage, float drawStrength) {
+		EntityUtil.applyPotions(target, new EffectBuilder(MobEffects.POISON, 40).level(3));
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText(LocaleUtil.Constants.POISONS_TARGETS, LocaleUtil.ItemDescriptionType.BENEFICIAL));
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
+	}
+}

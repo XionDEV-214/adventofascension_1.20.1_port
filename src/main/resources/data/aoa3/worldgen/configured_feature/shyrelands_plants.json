@@ -1,0 +1,59 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 16,
+    "xz_spread": 5,
+    "y_spread": 3,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "entries": [
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "aoa3:shyre_weed"
+                }
+              },
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "aoa3:arcbulb"
+                }
+              },
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "aoa3:horizon_daisies"
+                }
+              },
+              {
+                "weight": 1,
+                "data": {
+                  "Name": "aoa3:trilliad_bloom"
+                }
+              },
+              {
+                "weight": 10,
+                "data": {
+                  "Name": "aoa3:arcflower"
+                }
+              }
+            ],
+            "type": "minecraft:weighted_state_provider"
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    }
+  }
+}

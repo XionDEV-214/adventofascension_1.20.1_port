@@ -1,0 +1,77 @@
+{
+  "has_precipitation": false,
+  "temperature": 0.7,
+  "downfall": 0.25,
+  "effects": {
+    "fog_color": 16449466,
+    "sky_color": 16449466,
+    "water_color": 44799,
+    "water_fog_color": 44799,
+    "grass_color_modifier": "none"
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [
+      {
+        "type": "aoa3:dawnlight",
+        "weight": 5,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "aoa3:halycon",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "aoa3:eeo",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:rainicorn",
+        "weight": 3,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:voliant",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "aoa3:angelica",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "ambient": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "aoa3:havendales",
+      "aoa3:haven_plants",
+      "aoa3:haven_trees"
+    ],
+    []
+  ],
+  "creature_spawn_probability": 0.1
+}

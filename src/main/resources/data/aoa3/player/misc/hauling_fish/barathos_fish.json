@@ -1,0 +1,50 @@
+{
+  "biomes": [
+    "aoa3:barren_grounds"
+  ],
+  "entities": [
+    {
+      "weight": 200,
+      "entity": "aoa3:skelecanth"
+    },
+    {
+      "weight": 200,
+      "weight_mod": -20.0,
+      "item": "minecraft:dead_bush"
+    },
+    {
+      "weight": 190,
+      "weight_mod": -20.0,
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "weight": 180,
+      "weight_mod": -15.0,
+      "item": "minecraft:bone"
+    },
+    {
+      "weight": 160,
+      "weight_mod": -10.0,
+      "item": "minecraft:sand"
+    },
+    {
+      "weight": 140,
+      "item": "minecraft:clay_ball"
+    },
+    {
+      "weight": 150,
+      "weight_mod": -10.0,
+      "item": "minecraft:red_sand"
+    },
+    {
+      "weight": 100,
+      "weight_mod": 20.0,
+      "item": "aoa3:hive_chunk"
+    },
+    {
+      "level": 50,
+      "weight_mod": 2.0,
+      "item": "aoa3:old_boot"
+    }
+  ]
+}

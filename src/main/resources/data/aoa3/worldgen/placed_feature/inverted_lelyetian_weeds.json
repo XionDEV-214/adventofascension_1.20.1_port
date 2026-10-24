@@ -1,0 +1,23 @@
+{
+  "feature": "aoa3:inverted_lelyetian_weeds",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 5
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:underground_surface",
+      "maximum": 45,
+      "on_surface": true,
+      "on_ceiling": true,
+      "bottom_offset": 45
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    }
+  ]
+}

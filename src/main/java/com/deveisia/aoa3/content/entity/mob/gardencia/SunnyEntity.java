@@ -1,0 +1,101 @@
+package com.deveisia.aoa3.content.entity.mob.gardencia;
+
+import com.deveisia.aoa3.common.registration.AoABlocks;
+import com.deveisia.aoa3.common.registration.AoAItems;
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.content.entity.base.AoAMeleeMob;
+import com.deveisia.aoa3.util.EntityUtil;
+import com.deveisia.aoa3.util.ItemUtil;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class SunnyEntity extends AoAMeleeMob {
+    private  static final AttributeModifier CANDIED_WATER_BUFF = new AttributeModifier(UUID.fromString("d5356e33-40b6-4515-a37b-4377f911f703"), "AoAGardenciaCandiedWaterBuff", 50, AttributeModifier.Operation.ADDITION);
+    private boolean candiedWater = false;
+
+    public SunnyEntity(EntityType<? extends Monster> entityType, Level world) {
+        super(entityType, world);
+    }
+
+    @Override
+    protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+        return 2.125f;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getDeathSound() {
+        return AoASounds.ENTITY_GENERIC_PLANT_HURT.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return AoASounds.ENTITY_GENERIC_PLANT_HURT.get();
+    }
+
+    @Override
+    protected void onInsideBlock(BlockState state) {
+        if (state.getBlock() == AoABlocks.CANDIED_WATER.get()) {
+            if (!candiedWater) {
+                EntityUtil.applyAttributeModifierSafely(this, Attributes.MAX_HEALTH, CANDIED_WATER_BUFF, false);
+                setHealth(getHealth() * 1.5f);
+
+                candiedWater = true;
+            }
+        }
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag compound) {
+        super.addAdditionalSaveData(compound);
+
+        if (candiedWater)
+            compound.putBoolean("AoACandiedWater", true);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag compound) {
+        super.readAdditionalSaveData(compound);
+
+        candiedWater = compound.contains("AoACandiedWater");
+    }
+
+    @Override
+    public void aiStep() {
+        super.aiStep();
+
+        if (isAlive() && getHealth() < getMaxHealth()) {
+            if (isInWater()) {
+                heal(0.2f);
+            }
+            else if (level().isRainingAt(blockPosition())) {
+                heal(0.1f);
+            }
+
+            if (level().canSeeSky(blockPosition()))
+                heal(0.5f);
+        }
+    }
+
+    @Override
+    public void die(DamageSource cause) {
+        super.die(cause);
+
+        if (!level().isClientSide && candiedWater && cause.getEntity() instanceof Player && ItemUtil.findInventoryItem((Player)cause.getEntity(), new ItemStack(AoAItems.BLANK_REALMSTONE.get()), true, 1))
+            ItemUtil.givePlayerItemOrDrop((Player)cause.getEntity(), new ItemStack(AoAItems.LBOREAN_REALMSTONE.get()));
+    }
+}

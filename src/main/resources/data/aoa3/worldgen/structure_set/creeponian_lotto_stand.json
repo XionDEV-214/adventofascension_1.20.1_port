@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:creeponian_lotto_stand",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 20,
+    "separation": 6,
+    "salt": 1936255817
+  }
+}

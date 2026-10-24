@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:haunted_maze",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 32,
+    "separation": 10,
+    "salt": 1851784606
+  }
+}

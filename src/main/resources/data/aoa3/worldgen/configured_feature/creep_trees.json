@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:creep_tree",
+  "config": {
+    "state": {
+      "Properties": {
+        "stage": "0"
+      },
+      "Name": "aoa3:creep_sapling"
+    }
+  }
+}

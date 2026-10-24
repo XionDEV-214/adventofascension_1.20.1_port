@@ -1,0 +1,73 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 4,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:yellow_havendales_stem"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:yellow_havendales"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 1
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 4,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:blue_havendales_stem"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:blue_havendales"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 1
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:capped_column",
+          "config": {
+            "max_stem_size": 4,
+            "stem_block": {
+              "state": {
+                "Name": "aoa3:pink_havendales_stem"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "cap_block": {
+              "state": {
+                "Name": "aoa3:pink_havendales"
+              },
+              "type": "minecraft:simple_state_provider"
+            },
+            "min_stem_size": 1
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:control_tower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 28,
+    "separation": 8,
+    "salt": 1201335404
+  }
+}

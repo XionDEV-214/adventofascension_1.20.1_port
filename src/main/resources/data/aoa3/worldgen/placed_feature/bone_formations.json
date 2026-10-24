@@ -1,0 +1,18 @@
+{
+  "feature": "aoa3:bone_formations",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 25
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:underground_surface",
+      "maximum": 40,
+      "on_surface": true,
+      "bottom_offset": 35
+    }
+  ]
+}

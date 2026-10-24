@@ -1,0 +1,59 @@
+package com.deveisia.aoa3.content.item.weapon.crossbow;
+
+import com.deveisia.aoa3.content.entity.projectile.arrow.CustomArrowEntity;
+import com.deveisia.aoa3.util.LocaleUtil;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
+
+public class SpectralCrossbow extends BaseCrossbow {
+	public SpectralCrossbow(double damage, int durability) {
+		super(damage, durability);
+	}
+
+	@Override
+	protected ItemStack findAmmo(ItemStack crossbowStack, LivingEntity player, boolean infiniteAmmo) {
+		return new ItemStack(Items.ARROW);
+	}
+
+	@Override
+	public void doArrowMods(CustomArrowEntity arrow, Entity shooter, int useTicksRemaining) {
+		arrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flag) {
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText("items.description.damage.arrows", LocaleUtil.ItemDescriptionType.ITEM_DAMAGE, Component.literal(Double.toString(getDamage()))));
+		tooltip.add(LocaleUtil.getFormattedItemDescriptionText(this, LocaleUtil.ItemDescriptionType.BENEFICIAL, 1));
+
+		List<ItemStack> projectiles = getChargedProjectiles(stack);
+
+		if (isCharged(stack) && !projectiles.isEmpty()) {
+			ItemStack projectile = projectiles.get(0);
+			tooltip.add((Component.translatable("item.minecraft.crossbow.projectile")).append(" ").append(projectile.getDisplayName()));
+
+			if (flag.isAdvanced() && projectile.getItem() == Items.FIREWORK_ROCKET) {
+				List<Component> list1 = Lists.newArrayList();
+				Items.FIREWORK_ROCKET.appendHoverText(projectile, worldIn, list1, flag);
+
+				if (!list1.isEmpty()) {
+					for(int i = 0; i < list1.size(); ++i) {
+						list1.set(i, (Component.literal("  ")).append(list1.get(i)).withStyle(ChatFormatting.GRAY));
+					}
+
+					tooltip.addAll(list1);
+				}
+			}
+		}
+	}
+}

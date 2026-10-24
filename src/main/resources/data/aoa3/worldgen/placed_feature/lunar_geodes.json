@@ -1,0 +1,24 @@
+{
+  "feature": "aoa3:lunar_geodes",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 850
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 5
+        },
+        "max_inclusive": {
+          "absolute": 219
+        }
+      }
+    }
+  ]
+}

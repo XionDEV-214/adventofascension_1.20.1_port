@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "aoa3:wizard_flower",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 26,
+    "separation": 10,
+    "salt": 952624489
+  }
+}

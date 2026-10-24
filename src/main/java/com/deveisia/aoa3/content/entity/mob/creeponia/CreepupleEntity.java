@@ -1,0 +1,58 @@
+package com.deveisia.aoa3.content.entity.mob.creeponia;
+
+import com.deveisia.aoa3.common.registration.AoAGameRules;
+import com.deveisia.aoa3.common.registration.AoASounds;
+import com.deveisia.aoa3.util.WorldUtil;
+import javax.annotation.Nullable;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.level.Explosion;
+import net.minecraft.world.level.Level;
+
+public class CreepupleEntity extends AoACreeponiaCreeper {
+    public CreepupleEntity(EntityType<? extends AoACreeponiaCreeper> entityType, Level world) {
+        super(entityType, world);
+    }
+
+    @Override
+    protected float getStandingEyeHeight(Pose poseIn, EntityDimensions sizeIn) {
+        return 1.34375f;
+    }
+
+    @Override
+	public float getExplosionStrength() {
+        return 2.4f;
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return AoASounds.ENTITY_CREEPOID_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return AoASounds.ENTITY_CREEPOID_DEATH.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return AoASounds.ENTITY_CREEPOID_HURT.get();
+    }
+
+    @Override
+    protected void explode() {
+        if (!level().isClientSide) {
+            for (int i = 0; i < 3; i++) {
+                WorldUtil.createExplosion(this, level(), getX() + (random.nextDouble() * 3) - 1, getY() + (random.nextDouble() * 3) - 1, getZ() + (random.nextDouble() * 2) - 1, (getExplosionStrength() / 1.25f) * (isCharged() ? 2f : 1f), AoAGameRules.checkStrongerMobGriefing(level(), this) ? Level.ExplosionInteraction.TNT : Level.ExplosionInteraction.NONE);
+            }
+
+            level().explode(this, getX(), getY(), getZ(), getExplosionStrength() * (isCharged() ? 2f : 1f), AoAGameRules.checkStrongerMobGriefing(level(), this) ? Level.ExplosionInteraction.TNT : Level.ExplosionInteraction.NONE);
+            discard();
+            spawnLingeringCloud();
+        }
+    }
+}

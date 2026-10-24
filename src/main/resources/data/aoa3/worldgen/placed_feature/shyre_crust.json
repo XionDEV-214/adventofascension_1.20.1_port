@@ -1,0 +1,17 @@
+{
+  "feature": "aoa3:shyre_crust",
+  "placement": [
+    {
+      "type": "aoa3:all_z"
+    },
+    {
+      "type": "aoa3:all_x"
+    },
+    {
+      "type": "aoa3:underground_surface",
+      "maximum": 55,
+      "on_ceiling": true,
+      "bottom_offset": 45
+    }
+  ]
+}

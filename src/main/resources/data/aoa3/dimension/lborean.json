@@ -1,0 +1,11 @@
+{
+  "type": "aoa3:lborean",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "aoa3:lborean",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "aoa3:coral_fields"
+    }
+  }
+}

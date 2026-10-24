@@ -1,0 +1,23 @@
+{
+  "type": "aoa3:infusion",
+  "input": {
+    "item": "aoa3:boots_frame"
+  },
+  "ingredients": [
+    {
+      "tag": "forge:ingots/emberstone"
+    },
+    {
+      "tag": "forge:ingots/emberstone"
+    },
+    {
+      "tag": "forge:ingots/serenadium"
+    },
+    {
+      "tag": "forge:ingots/serenadium"
+    }
+  ],
+  "result": {
+    "item": "aoa3:lyndamyte_boots"
+  }
+}

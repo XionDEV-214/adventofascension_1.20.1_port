@@ -1,0 +1,24 @@
+{
+  "feature": "aoa3:degraded_signal_beacons",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 75
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "aoa3:underground_surface",
+      "maximum": 25,
+      "on_surface": true,
+      "on_ceiling": true,
+      "bottom_offset": 20
+    },
+    {
+      "type": "aoa3:offset",
+      "direction": "down",
+      "amount": 4
+    }
+  ]
+}

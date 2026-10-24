@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "aoa3:bright_shyre_tree",
+          "config": {
+            "state": {
+              "Properties": {
+                "stage": "0"
+              },
+              "Name": "aoa3:bright_shyre_sapling"
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "aoa3:normal_shyre_tree",
+          "config": {
+            "state": {
+              "Properties": {
+                "stage": "0"
+              },
+              "Name": "aoa3:shyre_sapling"
+            }
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

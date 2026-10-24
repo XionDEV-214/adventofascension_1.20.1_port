@@ -1,0 +1,66 @@
+{
+  "type": "aoa3:capped_column",
+  "config": {
+    "max_stem_size": 2,
+    "stem_block": {
+      "state": {
+        "Properties": {
+          "waterlogged": "false"
+        },
+        "Name": "aoa3:shroom_stem"
+      },
+      "type": "minecraft:simple_state_provider"
+    },
+    "cap_block": {
+      "entries": [
+        {
+          "weight": 10,
+          "data": {
+            "Properties": {
+              "waterlogged": "false"
+            },
+            "Name": "aoa3:yellow_shroom"
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Properties": {
+              "waterlogged": "false"
+            },
+            "Name": "aoa3:green_shroom"
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Properties": {
+              "waterlogged": "false"
+            },
+            "Name": "aoa3:orange_shroom"
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Properties": {
+              "waterlogged": "false"
+            },
+            "Name": "aoa3:purple_shroom"
+          }
+        },
+        {
+          "weight": 10,
+          "data": {
+            "Properties": {
+              "waterlogged": "false"
+            },
+            "Name": "aoa3:blue_shroom"
+          }
+        }
+      ],
+      "type": "minecraft:weighted_state_provider"
+    },
+    "min_stem_size": 1
+  }
+}

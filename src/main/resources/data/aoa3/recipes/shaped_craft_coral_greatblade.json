@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " B ",
+    "ABA",
+    " C "
+  ],
+  "key": {
+    "A": {
+      "item": "aoa3:pink_coral"
+    },
+    "B": {
+      "item": "aoa3:coral_stone"
+    },
+    "C": {
+      "tag": "forge:rods/serenadium"
+    }
+  },
+  "result": {
+    "item": "aoa3:coral_greatblade"
+  }
+}

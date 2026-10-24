@@ -1,0 +1,120 @@
+package com.deveisia.aoa3.content.entity.mob.misc;
+
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import com.deveisia.aoa3.client.render.AoAAnimations;
+import com.deveisia.aoa3.common.registration.AoABlocks;
+import com.deveisia.aoa3.common.registration.AoAEntities;
+import com.deveisia.aoa3.content.entity.ai.mob.AnimatableMeleeAttackGoal;
+import com.deveisia.aoa3.content.entity.base.AoAMeleeMob;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+
+public class ThornyPlantSproutEntity extends AoAMeleeMob {
+	private static final RawAnimation ATTACK_LEFT = RawAnimation.begin().thenPlay("attack.swipe_left");
+	private static final RawAnimation ATTACK_RIGHT = RawAnimation.begin().thenPlay("attack.swipe_right");
+
+	public ThornyPlantSproutEntity(EntityType<? extends Monster> entityType, Level world) {
+		super(entityType, world);
+
+		setPersistenceRequired();
+	}
+
+	public ThornyPlantSproutEntity(Level world, BlockPos plantPos) {
+		this(AoAEntities.Misc.THORNY_PLANT_SPROUT.get(), world);
+
+		moveTo(plantPos.getX() + 0.5f + random.nextGaussian() * 0.1f, plantPos.getY() + 0.1f ,plantPos.getZ() + 0.5f + random.nextGaussian() * 0.1f, random.nextFloat() * 360, 0);
+	}
+
+	@Override
+	protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
+		return 1.4f;
+	}
+
+	@Override
+	protected void registerGoals() {
+		goalSelector.addGoal(2, new AnimatableMeleeAttackGoal<AoAMeleeMob>(this).preAttackTime(getPreAttackTime()).attackInterval(getCurrentSwingDuration()).attackReach(2f));
+		goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 8f));
+		goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+		targetSelector.addGoal(1, new HurtByTargetGoal(this));
+		targetSelector.addGoal(2, new NearestAttackableTargetGoal<Monster>(this, Monster.class, 5, true, true, entity -> entity.getType() != this.getType()));
+		targetSelector.addGoal(3, new NearestAttackableTargetGoal<Player>(this, Player.class, 5, true, true, null));
+	}
+
+	@Override
+	protected void customServerAiStep() {
+		if (tickCount % 5 == 0 && level().getBlockState(BlockPos.containing(getX(), getY() + 0.25f, getZ())).getBlock() != AoABlocks.THORNY_PLANT_CROP.get())
+			discard();
+	}
+
+	@Override
+	public void move(MoverType pType, Vec3 pPos) {}
+
+	@Override
+	public void push(double pX, double pY, double pZ) {}
+
+	@Override
+	protected boolean shouldDespawnInPeaceful() {
+		return false;
+	}
+
+	@Override
+	public boolean isPushedByFluid() {
+		return false;
+	}
+
+	@Override
+	public boolean canChangeDimensions() {
+		return false;
+	}
+
+	@Override
+	protected int getAttackSwingDuration() {
+		return 15;
+	}
+
+	@Override
+	public void remove(RemovalReason reason) {
+		super.remove(reason);
+
+		if (level().getBlockState(blockPosition().above()).getBlock() == AoABlocks.THORNY_PLANT_CROP.get() && level().getEntities(this, getBoundingBox(), entity -> entity.getType() == getType()).isEmpty())
+			level().destroyBlock(blockPosition().above(), true);
+	}
+
+	@Override
+	public void registerControllers(AnimatableManager.ControllerRegistrar animationData) {
+		animationData.add(new AnimationController<ThornyPlantSproutEntity>(this, "living", 0, event -> {
+			if (tickCount < 20) {
+				event.getController().setAnimation(AoAAnimations.SPAWN);
+			}
+			else {
+				event.getController().setAnimation(AoAAnimations.IDLE);
+			}
+
+			return PlayState.CONTINUE;
+		}));
+		animationData.add(new AnimationController<ThornyPlantSproutEntity>(this, "attacking", 0, event -> {
+			if (swinging) {
+				event.getController().setAnimation(ATTACK_RIGHT);
+
+				return PlayState.CONTINUE;
+			}
+
+			event.getController().forceAnimationReset();
+			return PlayState.STOP;
+		}));
+	}
+}
