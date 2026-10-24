@@ -202,6 +202,10 @@ public final class Material {
 		return STONE;
 	}
 
+	public static Material ofProperties(BlockBehaviour.Properties properties) {
+		return PROPERTIES_MATERIALS.get(properties);
+	}
+
 	public static void track(BlockBehaviour.Properties properties, Material material) {
 		PROPERTIES_MATERIALS.put(properties, material);
 	}

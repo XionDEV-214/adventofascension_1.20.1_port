@@ -1,5 +1,6 @@
 package com.deveisia.aoa3.util;
 
+import com.deveisia.aoa3.library.compat.HarvestData;
 import com.deveisia.aoa3.library.compat.Material;
 import com.deveisia.aoa3.library.compat.ToolType;
 import com.mojang.datafixers.util.Pair;
@@ -42,20 +43,26 @@ public final class BlockUtil {
 		}
 
 		public CompactProperties harvestTool(ToolType tool, int harvestLevel) {
+			harvestLevel(harvestLevel);
+
 			return harvestTool(tool);
 		}
 
 		public CompactProperties harvestTool(ToolType tool) {
 			this.properties.requiresCorrectToolForDrops();
 
-			return this;
+			return tool(tool);
 		}
 
 		public CompactProperties tool(ToolType tool) {
+			HarvestData.setTool(this.properties, tool);
+
 			return this;
 		}
 
 		public CompactProperties harvestLevel(int level) {
+			HarvestData.setLevel(this.properties, level);
+
 			return this;
 		}
 

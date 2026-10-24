@@ -25,7 +25,9 @@
     "common.patch.BiomeMixin",
     "common.patch.ItemMixin",
     "common.patch.PlayerFlyingSpeedMixin",
-    "common.patch.ServerPlayNetHandlerMixin"
+    "common.patch.ServerPlayNetHandlerMixin",
+    "common.patch.BlockPropertiesCopyMixin",
+    "common.patch.TagLoaderMixin"
   ],
   "client": [
     "client.accessor.GuiAccessor",
