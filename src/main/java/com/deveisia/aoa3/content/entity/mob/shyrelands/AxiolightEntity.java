@@ -9,6 +9,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
@@ -51,7 +52,14 @@ public class AxiolightEntity extends AoAMeleeMob {
 
         List<Player> playerList = level().getEntitiesOfClass(Player.class, getBoundingBox().inflate(12), PlayerUtil::shouldPlayerBeAffected);
 
-        if (playerList.isEmpty())
-            EntityUtil.applyPotions(this, new EffectBuilder(MobEffects.INVISIBILITY).hideParticles());
+        if (playerList.isEmpty()) {
+            EntityUtil.applyPotions(this, new EffectBuilder(MobEffects.INVISIBILITY, 20).hideParticles());
+        }
+        else {
+            MobEffectInstance invisibility = getEffect(MobEffects.INVISIBILITY);
+
+            if (invisibility != null && (invisibility.getDuration() == MobEffectInstance.INFINITE_DURATION || invisibility.getDuration() <= 20))
+                removeEffect(MobEffects.INVISIBILITY);
+        }
     }
 }

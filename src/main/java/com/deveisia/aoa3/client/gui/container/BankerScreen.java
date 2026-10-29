@@ -27,7 +27,7 @@ public class BankerScreen extends AbstractContainerScreen<BankerContainer> {
 	public BankerScreen(BankerContainer container, Inventory inv, Component guiTitle) {
 		super(container, inv, guiTitle);
 
-		this.imageHeight = 187;
+		this.imageHeight = 249;
 		this.mc = Minecraft.getInstance();
 	}
 
@@ -72,11 +72,11 @@ public class BankerScreen extends AbstractContainerScreen<BankerContainer> {
 	}
 
 	private void renderCoinPlaceholders(GuiGraphics guiGraphics, int centerX, int centerY) {
-		for (int i = 0; i < 12; i++) {
+		for (int i = 0; i < BankerContainer.COIN_SLOTS; i++) {
 			Slot slot = menu.getSlot(i);
 
 			if (slot.getItem().isEmpty()) {
-				ItemStack coinStack = new ItemStack(BankerContainer.getCoinForSlot(i), (i < 3 || i > 8) ? 20 : 1);
+				ItemStack coinStack = new ItemStack(BankerContainer.getCoinForSlot(i), BankerContainer.getCountForSlot(i));
 
 				guiGraphics.renderFakeItem(coinStack, slot.x + centerX, slot.y + centerY);
 				guiGraphics.renderItemDecorations(mc.font, coinStack, slot.x + centerX, slot.y + centerY);

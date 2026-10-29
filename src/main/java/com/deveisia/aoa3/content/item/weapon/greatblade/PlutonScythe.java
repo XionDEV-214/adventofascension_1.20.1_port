@@ -23,7 +23,7 @@ public class PlutonScythe extends BaseGreatblade {
 	private static final AttributeModifier LUCK_BUFF = new AttributeModifier(UUID.fromString("e446949b-1792-4a66-8f83-5037d6dcce9b"), "AoALuxonScytheLuckBuff", 2, AttributeModifier.Operation.ADDITION);
 
 	public PlutonScythe() {
-		super(19.0f, -3D, 175);
+		super(19.0f, -3D, 1750);
 	}
 
 	@Override

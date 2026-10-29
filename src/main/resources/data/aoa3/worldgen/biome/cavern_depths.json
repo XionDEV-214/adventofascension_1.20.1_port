@@ -9,7 +9,7 @@
     "water_fog_color": 13158600,
     "grass_color_modifier": "none",
     "music": {
-      "sound": "aoa3:biome.cavern_depths.music",
+      "sound": "aoa3:cavern_depths_music",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false

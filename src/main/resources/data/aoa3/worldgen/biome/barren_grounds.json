@@ -9,7 +9,7 @@
     "water_fog_color": 16773825,
     "grass_color_modifier": "none",
     "music": {
-      "sound": "aoa3:biome.barren_grounds.music",
+      "sound": "aoa3:barren_grounds_music",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false

@@ -24,6 +24,8 @@ public class HavenLootModifier extends LootModifier {
 	public static final Codec<HavenLootModifier> CODEC = RecordCodecBuilder.create(builder -> codecStart(builder).apply(builder, HavenLootModifier::new));
 	public static final ResourceLocation HAVEN_LOOT_TABLE = ResourceLocation.fromNamespaceAndPath(AdventOfAscension.MOD_ID, "worlds/haven_passive");
 
+	private static final ThreadLocal<Boolean> GENERATING = ThreadLocal.withInitial(() -> Boolean.FALSE);
+
 	public HavenLootModifier(LootItemCondition[] conditions) {
 		super(conditions);
 	}
@@ -36,12 +38,22 @@ public class HavenLootModifier extends LootModifier {
 	@Nonnull
 	@Override
 	protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+		if (GENERATING.get())
+			return generatedLoot;
+
 		if (WorldUtil.isWorld((ServerLevelAccessor)context.getLevel(), AoADimensions.HAVEN.key) && context.hasParam(LootContextParams.THIS_ENTITY) && context.hasParam(LootContextParams.ORIGIN) && !context.hasParam(LootContextParams.KILLER_ENTITY) && !context.hasParam(LootContextParams.DIRECT_KILLER_ENTITY)) {
 			if (!context.hasParam(LootContextParams.BLOCK_STATE) || context.getRandom().nextInt(10) == 0) {
-				generatedLoot.addAll(LootUtil.generateLoot(context.getLevel(), HAVEN_LOOT_TABLE, new LootParams.Builder(context.getLevel())
-						.withParameter(LootContextParams.THIS_ENTITY, context.getParamOrNull(LootContextParams.THIS_ENTITY))
-						.withParameter(LootContextParams.ORIGIN, context.getParamOrNull(LootContextParams.ORIGIN))
-						.create(LootContextParamSets.GIFT)));
+				GENERATING.set(Boolean.TRUE);
+
+				try {
+					generatedLoot.addAll(LootUtil.generateLoot(context.getLevel(), HAVEN_LOOT_TABLE, new LootParams.Builder(context.getLevel())
+							.withParameter(LootContextParams.THIS_ENTITY, context.getParamOrNull(LootContextParams.THIS_ENTITY))
+							.withParameter(LootContextParams.ORIGIN, context.getParamOrNull(LootContextParams.ORIGIN))
+							.create(LootContextParamSets.GIFT)));
+				}
+				finally {
+					GENERATING.set(Boolean.FALSE);
+				}
 			}
 		}
 

@@ -107,6 +107,10 @@ public final class AoAItems {
 	public static final RegistryObject<Item> SILVER_COIN = registerItem("silver_coin", miscItem());
 	public static final RegistryObject<Item> GOLD_COIN = registerItem("gold_coin", miscItem());
 	public static final RegistryObject<Item> LUNAVER_COIN = registerItem("lunaver_coin", miscItem());
+	public static final RegistryObject<Item> RANAX_COIN = registerItem("ranax_coin", miscItem());
+	public static final RegistryObject<Item> SOLDENA_COIN = registerItem("soldena_coin", miscItem());
+	public static final RegistryObject<Item> ECLIPSIA_COIN = registerItem("eclipsia_coin", miscItem());
+	public static final RegistryObject<Item> CRAEADAE_COIN = registerItem("craeadae_coin", miscItem());
 	public static final RegistryObject<Item> CONFETTI_PILE = registerItem("confetti_pile", miscFuelItem(10));
 	public static final RegistryObject<Item> CORAL_STONE = registerItem("coral_stone", miscItem());
 	public static final RegistryObject<Item> COSMIC_DUST = registerItem("cosmic_dust", miscItem());

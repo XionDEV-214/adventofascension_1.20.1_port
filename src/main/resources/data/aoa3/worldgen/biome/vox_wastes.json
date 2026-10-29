@@ -9,7 +9,7 @@
     "water_fog_color": 6787840,
     "grass_color_modifier": "none",
     "music": {
-      "sound": "aoa3:biome.vox_wastes.music",
+      "sound": "aoa3:vox_wastes_music",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false
